@@ -26,7 +26,7 @@
   <meta property="twitter:image" content="https://stella.stillkettle.com/images/og-image.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%23000' cx='50' cy='50' r='45'/><polygon fill='%23fff' points='50,15 58,40 85,40 63,55 72,80 50,65 28,80 37,55 15,40 42,40'/></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23000' width='100' height='100' rx='20'/><path fill='%23fff' d='M50 20L30 60h15v20l20-40H50V20z'/></svg>">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -84,8 +84,8 @@
       <!-- Logo -->
       <div class="flex items-center space-x-2">
         <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-          <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-            <polygon points="12,2 14.5,9 22,9 16,13.5 18.5,21 12,16.5 5.5,21 8,13.5 2,9 9.5,9"/>
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
           </svg>
         </div>
         <span class="text-xl font-semibold">Stella</span>
@@ -133,8 +133,8 @@
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-3xl mx-auto">
       <!-- Badge -->
-      <div class="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 text-gray-700 text-sm font-medium mb-6">
-        <svg class="w-4 h-4 mr-2 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+      <div class="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-sm font-medium mb-6">
+        <svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
         </svg>
         Free Chrome Extension
@@ -143,7 +143,7 @@
       <!-- Headline -->
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-6">
         Extract invoices from Gmail to Google Sheets
-        <span class="text-black"> automatically</span>
+        <span class="text-gray-400"> automatically</span>
       </h1>
 
       <!-- Subheadline -->
@@ -170,7 +170,7 @@
     </div>
 
     <!-- Hero Image Placeholder -->
-    <div class="mt-16 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 overflow-hidden shadow-2xl">
+    <div class="mt-16 rounded-2xl bg-gray-100 border border-gray-200 overflow-hidden shadow-2xl">
       <div class="aspect-video flex items-center justify-center text-gray-400">
         <div class="text-center">
           <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -183,49 +183,12 @@
   </div>
 </section>
 
-<!-- Integrations Bar -->
-<section class="py-12 border-b border-gray-100">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <p class="text-center text-sm text-gray-500 mb-6">Works seamlessly with</p>
-    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-      <!-- Gmail -->
-      <div class="flex items-center gap-2 text-gray-400 hover:text-gray-600 transition-colors">
-        <svg class="w-6 h-6" fill="#EA4335" viewBox="0 0 24 24">
-          <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
-        </svg>
-        <span class="text-sm font-medium text-gray-600">Gmail</span>
-      </div>
-      <!-- Google Sheets -->
-      <div class="flex items-center gap-2 text-gray-400 hover:text-gray-600 transition-colors">
-        <svg class="w-6 h-6" fill="#34A853" viewBox="0 0 24 24">
-          <path d="M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6l-6-6zm1.363 10.636h-3.41v1.91h3.41v-1.91zm0 3.273h-3.41v1.91h3.41v-1.91zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5h6.5zm-3.273 2.773H6.545v7.909h10.91v-7.91zm-6.136 4.636H7.91v1.91h3.41v-1.91z"/>
-        </svg>
-        <span class="text-sm font-medium text-gray-600">Google Sheets</span>
-      </div>
-      <!-- Google -->
-      <div class="flex items-center gap-2 text-gray-400 hover:text-gray-600 transition-colors">
-        <svg class="w-6 h-6" fill="#4285F4" viewBox="0 0 24 24">
-          <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
-        </svg>
-        <span class="text-sm font-medium text-gray-600">Google OAuth</span>
-      </div>
-      <!-- Chrome -->
-      <div class="flex items-center gap-2 text-gray-400 hover:text-gray-600 transition-colors">
-        <svg class="w-6 h-6" fill="#4285F4" viewBox="0 0 24 24">
-          <path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-5.344 9.257c.206.01.413.016.621.016 6.627 0 12-5.373 12-12 0-1.54-.29-3.011-.818-4.364zM12 16.364a4.364 4.364 0 1 1 0-8.728 4.364 4.364 0 0 1 0 8.728Z"/>
-        </svg>
-        <span class="text-sm font-medium text-gray-600">Chrome Extension</span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Coming Soon Modal -->
 <div id="coming-soon" class="hidden fixed inset-0 bg-black/50 z-50 items-center justify-center">
   <div class="bg-white rounded-2xl p-8 max-w-md mx-4 text-center">
     <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-      <svg class="w-8 h-8 text-gray-900" viewBox="0 0 24 24" fill="currentColor">
-        <polygon points="12,2 14.5,9 22,9 16,13.5 18.5,21 12,16.5 5.5,21 8,13.5 2,9 9.5,9"/>
+      <svg class="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
       </svg>
     </div>
     <h3 class="text-2xl font-bold text-gray-900 mb-2">Coming Soon!</h3>
@@ -260,7 +223,7 @@
       <!-- Step 2 -->
       <div class="text-center">
         <div class="w-16 h-16 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center mx-auto mb-6">
-          <svg class="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
           </svg>
         </div>
@@ -272,9 +235,9 @@
       <!-- Step 3 -->
       <div class="text-center">
         <div class="w-16 h-16 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center mx-auto mb-6">
-          <!-- Google Sheets official icon -->
-          <svg class="w-8 h-8" fill="#34A853" viewBox="0 0 24 24">
-            <path d="M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6l-6-6zm1.363 10.636h-3.41v1.91h3.41v-1.91zm0 3.273h-3.41v1.91h3.41v-1.91zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5h6.5zm-3.273 2.773H6.545v7.909h10.91v-7.91zm-6.136 4.636H7.91v1.91h3.41v-1.91z"/>
+          <svg class="w-8 h-8 text-green-500" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.5 3H4.5C3.12 3 2 4.12 2 5.5v13C2 19.88 3.12 21 4.5 21h15c1.38 0 2.5-1.12 2.5-2.5v-13C22 4.12 20.88 3 19.5 3zm-1 14h-13c-.55 0-1-.45-1-1v-9c0-.55.45-1 1-1h13c.55 0 1 .45 1 1v9c0 .55-.45 1-1 1z"/>
+            <path d="M7 11h2v5H7zm4-3h2v8h-2zm4 2h2v6h-2z"/>
           </svg>
         </div>
         <div class="text-sm font-semibold text-gray-400 mb-2">STEP 3</div>
@@ -308,9 +271,8 @@
       <!-- Feature 2 -->
       <div class="p-6 rounded-2xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all">
         <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
-          <!-- Google Sheets official icon -->
-          <svg class="w-6 h-6" fill="#34A853" viewBox="0 0 24 24">
-            <path d="M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6l-6-6zm1.363 10.636h-3.41v1.91h3.41v-1.91zm0 3.273h-3.41v1.91h3.41v-1.91zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5h6.5zm-3.273 2.773H6.545v7.909h10.91v-7.91zm-6.136 4.636H7.91v1.91h3.41v-1.91z"/>
+          <svg class="w-6 h-6 text-green-600" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.5 3H4.5C3.12 3 2 4.12 2 5.5v13C2 19.88 3.12 21 4.5 21h15c1.38 0 2.5-1.12 2.5-2.5v-13C22 4.12 20.88 3 19.5 3zm-1 14h-13c-.55 0-1-.45-1-1v-9c0-.55.45-1 1-1h13c.55 0 1 .45 1 1v9c0 .55-.45 1-1 1z"/>
           </svg>
         </div>
         <h3 class="text-lg font-semibold text-gray-900 mb-2">Google Sheets Export</h3>
@@ -579,8 +541,8 @@
       <div class="md:col-span-1">
         <div class="flex items-center space-x-2 mb-4">
           <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-            <svg class="w-5 h-5 text-gray-900" viewBox="0 0 24 24" fill="currentColor">
-              <polygon points="12,2 14.5,9 22,9 16,13.5 18.5,21 12,16.5 5.5,21 8,13.5 2,9 9.5,9"/>
+            <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
             </svg>
           </div>
           <span class="text-xl font-semibold">Stella</span>
