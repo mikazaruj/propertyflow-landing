@@ -5,38 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Primary Meta Tags -->
-  <title>PropertyFlow - Extract Gmail Invoices to Google Sheets Automatically</title>
-  <meta name="title" content="PropertyFlow - Extract Gmail Invoices to Google Sheets Automatically">
-  <meta name="description" content="AI-powered Chrome extension that automatically extracts invoice data from your Gmail and exports to Google Sheets. Free to start.">
-  <meta name="keywords" content="invoice extraction, gmail automation, google sheets, property management, bill tracking, chrome extension">
-  <meta name="author" content="PropertyFlow">
+  <title>Stella - Extract Gmail Invoices to Google Sheets Automatically</title>
+  <meta name="title" content="Stella - Extract Gmail Invoices to Google Sheets Automatically">
+  <meta name="description" content="Extract invoice data from Gmail to Google Sheets automatically. AI-powered scanning, no manual entry required. Free Chrome extension.">
+  <meta name="keywords" content="gmail invoice scanner, invoice to google sheets, extract invoice data, email invoice extractor, expense tracker, billing automation">
+  <meta name="author" content="Still Kettle">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://propertyflow.ai/">
-  <meta property="og:title" content="PropertyFlow - Invoice Extraction Made Easy">
+  <meta property="og:url" content="https://stella.stillkettle.com/">
+  <meta property="og:title" content="Stella - Gmail Invoice Scanner">
   <meta property="og:description" content="Stop manually copying invoice data. Extract from Gmail to Sheets in seconds.">
-  <meta property="og:image" content="https://propertyflow.ai/images/og-image.png">
+  <meta property="og:image" content="https://stella.stillkettle.com/images/og-image.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://propertyflow.ai/">
-  <meta property="twitter:title" content="PropertyFlow - Invoice Extraction Made Easy">
+  <meta property="twitter:url" content="https://stella.stillkettle.com/">
+  <meta property="twitter:title" content="Stella - Gmail Invoice Scanner">
   <meta property="twitter:description" content="Stop manually copying invoice data. Extract from Gmail to Sheets in seconds.">
-  <meta property="twitter:image" content="https://propertyflow.ai/images/og-image.png">
+  <meta property="twitter:image" content="https://stella.stillkettle.com/images/og-image.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23000' width='100' height='100' rx='20'/><path fill='%23fff' d='M50 20L30 60h15v20l20-40H50V20z'/></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%23F59E0B' cx='50' cy='50' r='45'/><polygon fill='%23fff' points='50,15 58,40 85,40 63,55 72,80 50,65 28,80 37,55 15,40 42,40'/></svg>">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "PropertyFlow",
+    "name": "Stella - Gmail Invoice Scanner",
     "description": "AI-powered Chrome extension that automatically extracts invoice data from Gmail to Google Sheets",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Chrome",
+    "author": {
+      "@type": "Organization",
+      "name": "Still Kettle",
+      "url": "https://stillkettle.com"
+    },
     "offers": {
       "@type": "AggregateOffer",
       "lowPrice": "0",
@@ -56,6 +61,20 @@
           fontFamily: {
             sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
           },
+          colors: {
+            stella: {
+              50: '#FFFBEB',
+              100: '#FEF3C7',
+              200: '#FDE68A',
+              300: '#FCD34D',
+              400: '#FBBF24',
+              500: '#F59E0B',
+              600: '#D97706',
+              700: '#B45309',
+              800: '#92400E',
+              900: '#78350F',
+            }
+          }
         },
       },
     }
@@ -78,12 +97,12 @@
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->
       <div class="flex items-center space-x-2">
-        <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        <div class="w-8 h-8 bg-stella-500 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="12,2 14.5,9 22,9 16,13.5 18.5,21 12,16.5 5.5,21 8,13.5 2,9 9.5,9"/>
           </svg>
         </div>
-        <span class="text-xl font-semibold">PropertyFlow</span>
+        <span class="text-xl font-semibold">Stella</span>
       </div>
 
       <!-- Desktop Links -->
@@ -95,7 +114,7 @@
 
       <!-- CTA + Mobile Menu Button -->
       <div class="flex items-center space-x-4">
-        <a href="#" class="hidden sm:inline-flex bg-black text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors">
+        <a href="#coming-soon" class="hidden sm:inline-flex bg-stella-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-stella-600 transition-colors">
           Install Free
         </a>
         <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
@@ -113,7 +132,7 @@
       <a href="#features" class="block text-gray-600 hover:text-gray-900 text-sm font-medium">Features</a>
       <a href="#pricing" class="block text-gray-600 hover:text-gray-900 text-sm font-medium">Pricing</a>
       <a href="#faq" class="block text-gray-600 hover:text-gray-900 text-sm font-medium">FAQ</a>
-      <a href="#" class="block bg-black text-white px-4 py-2 rounded-full text-sm font-medium text-center hover:bg-gray-800">
+      <a href="#coming-soon" class="block bg-stella-500 text-white px-4 py-2 rounded-full text-sm font-medium text-center hover:bg-stella-600">
         Install Free
       </a>
     </div>
@@ -128,8 +147,8 @@
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-3xl mx-auto">
       <!-- Badge -->
-      <div class="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-sm font-medium mb-6">
-        <svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+      <div class="inline-flex items-center px-3 py-1 rounded-full bg-stella-100 text-stella-700 text-sm font-medium mb-6">
+        <svg class="w-4 h-4 mr-2 text-stella-500" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
         </svg>
         Free Chrome Extension
@@ -138,19 +157,20 @@
       <!-- Headline -->
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-6">
         Extract invoices from Gmail to Google Sheets
-        <span class="text-gray-400"> automatically</span>
+        <span class="text-stella-500"> automatically</span>
       </h1>
 
       <!-- Subheadline -->
       <p class="text-lg sm:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-        Stop manually copying invoice data. PropertyFlow AI scans your emails and exports billing details in seconds.
+        Stop manually copying invoice data. Stella AI scans your emails and exports billing details in seconds.
       </p>
 
       <!-- CTAs -->
       <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <a href="#" class="inline-flex items-center justify-center bg-black text-white px-8 py-4 rounded-full text-base font-medium hover:bg-gray-800 transition-colors">
+        <a href="#coming-soon" class="inline-flex items-center justify-center bg-stella-500 text-white px-8 py-4 rounded-full text-base font-medium hover:bg-stella-600 transition-colors">
           <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C8.21 0 5.831 1.757 5.831 4.243v3.473H3.412v4.636h2.419V24h5.076V12.352h3.385l.503-4.636h-3.888V4.67c0-1.34.373-2.254 2.292-2.254H15v-4.14C14.516.093 13.385 0 12 0z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 19.5a7.5 7.5 0 110-15 7.5 7.5 0 010 15z"/>
+            <circle cx="12" cy="12" r="4"/>
           </svg>
           Install Free Extension
         </a>
@@ -164,10 +184,10 @@
     </div>
 
     <!-- Hero Image Placeholder -->
-    <div class="mt-16 rounded-2xl bg-gray-100 border border-gray-200 overflow-hidden shadow-2xl">
-      <div class="aspect-video flex items-center justify-center text-gray-400">
+    <div class="mt-16 rounded-2xl bg-gradient-to-br from-stella-50 to-stella-100 border border-stella-200 overflow-hidden shadow-2xl">
+      <div class="aspect-video flex items-center justify-center text-stella-400">
         <div class="text-center">
-          <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-16 h-16 mx-auto mb-4 text-stella-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
           </svg>
           <p>Extension screenshot will go here</p>
@@ -176,6 +196,22 @@
     </div>
   </div>
 </section>
+
+<!-- Coming Soon Modal -->
+<div id="coming-soon" class="hidden fixed inset-0 bg-black/50 z-50 items-center justify-center">
+  <div class="bg-white rounded-2xl p-8 max-w-md mx-4 text-center">
+    <div class="w-16 h-16 bg-stella-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <svg class="w-8 h-8 text-stella-500" viewBox="0 0 24 24" fill="currentColor">
+        <polygon points="12,2 14.5,9 22,9 16,13.5 18.5,21 12,16.5 5.5,21 8,13.5 2,9 9.5,9"/>
+      </svg>
+    </div>
+    <h3 class="text-2xl font-bold text-gray-900 mb-2">Coming Soon!</h3>
+    <p class="text-gray-600 mb-6">Stella is launching soon on the Chrome Web Store. Check back shortly!</p>
+    <button onclick="document.getElementById('coming-soon').classList.add('hidden'); document.getElementById('coming-soon').classList.remove('flex');" class="bg-stella-500 text-white px-6 py-3 rounded-full font-medium hover:bg-stella-600 transition-colors">
+      Got it
+    </button>
+  </div>
+</div>
 
 <!-- How It Works Section -->
 <section id="how-it-works" class="py-20 bg-gray-50">
@@ -201,13 +237,13 @@
       <!-- Step 2 -->
       <div class="text-center">
         <div class="w-16 h-16 bg-white rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center mx-auto mb-6">
-          <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-8 h-8 text-stella-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
           </svg>
         </div>
         <div class="text-sm font-semibold text-gray-400 mb-2">STEP 2</div>
         <h3 class="text-xl font-semibold text-gray-900 mb-3">Scan Invoices</h3>
-        <p class="text-gray-600">AI identifies invoice emails and extracts key fields like amount, date, and vendor.</p>
+        <p class="text-gray-600">Stella AI identifies invoice emails and extracts key fields like amount, date, and vendor.</p>
       </div>
 
       <!-- Step 3 -->
@@ -236,7 +272,7 @@
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Feature 1 -->
-      <div class="p-6 rounded-2xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all">
+      <div class="p-6 rounded-2xl border border-gray-200 hover:border-stella-300 hover:shadow-sm transition-all">
         <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
           <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
@@ -247,7 +283,7 @@
       </div>
 
       <!-- Feature 2 -->
-      <div class="p-6 rounded-2xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all">
+      <div class="p-6 rounded-2xl border border-gray-200 hover:border-stella-300 hover:shadow-sm transition-all">
         <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
           <svg class="w-6 h-6 text-green-600" viewBox="0 0 24 24" fill="currentColor">
             <path d="M19.5 3H4.5C3.12 3 2 4.12 2 5.5v13C2 19.88 3.12 21 4.5 21h15c1.38 0 2.5-1.12 2.5-2.5v-13C22 4.12 20.88 3 19.5 3zm-1 14h-13c-.55 0-1-.45-1-1v-9c0-.55.45-1 1-1h13c.55 0 1 .45 1 1v9c0 .55-.45 1-1 1z"/>
@@ -258,7 +294,7 @@
       </div>
 
       <!-- Feature 3 -->
-      <div class="p-6 rounded-2xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all">
+      <div class="p-6 rounded-2xl border border-gray-200 hover:border-stella-300 hover:shadow-sm transition-all">
         <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
           <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
@@ -269,7 +305,7 @@
       </div>
 
       <!-- Feature 4 (Pro) -->
-      <div class="p-6 rounded-2xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all">
+      <div class="p-6 rounded-2xl border border-gray-200 hover:border-stella-300 hover:shadow-sm transition-all">
         <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4">
           <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
@@ -277,13 +313,13 @@
         </div>
         <div class="flex items-center gap-2 mb-2">
           <h3 class="text-lg font-semibold text-gray-900">PDF Processing</h3>
-          <span class="text-xs font-medium bg-black text-white px-2 py-0.5 rounded-full">Pro</span>
+          <span class="text-xs font-medium bg-stella-500 text-white px-2 py-0.5 rounded-full">Pro</span>
         </div>
         <p class="text-gray-600">Extract data from PDF invoice attachments. Works with most invoice formats.</p>
       </div>
 
       <!-- Feature 5 (Pro) -->
-      <div class="p-6 rounded-2xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all">
+      <div class="p-6 rounded-2xl border border-gray-200 hover:border-stella-300 hover:shadow-sm transition-all">
         <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-4">
           <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -291,13 +327,13 @@
         </div>
         <div class="flex items-center gap-2 mb-2">
           <h3 class="text-lg font-semibold text-gray-900">Scheduled Scans</h3>
-          <span class="text-xs font-medium bg-black text-white px-2 py-0.5 rounded-full">Pro</span>
+          <span class="text-xs font-medium bg-stella-500 text-white px-2 py-0.5 rounded-full">Pro</span>
         </div>
         <p class="text-gray-600">Daily, weekly, or monthly automatic scans. Set it and forget it.</p>
       </div>
 
       <!-- Feature 6 -->
-      <div class="p-6 rounded-2xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all">
+      <div class="p-6 rounded-2xl border border-gray-200 hover:border-stella-300 hover:shadow-sm transition-all">
         <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-4">
           <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
@@ -368,15 +404,15 @@
           </li>
         </ul>
 
-        <a href="#" class="block w-full text-center border border-gray-300 text-gray-700 px-6 py-3 rounded-full font-medium hover:bg-gray-50 transition-colors">
+        <a href="#coming-soon" class="block w-full text-center border border-gray-300 text-gray-700 px-6 py-3 rounded-full font-medium hover:bg-gray-50 transition-colors">
           Install Free
         </a>
       </div>
 
       <!-- Pro Plan -->
-      <div class="bg-white rounded-2xl border-2 border-black p-8 relative">
+      <div class="bg-white rounded-2xl border-2 border-stella-500 p-8 relative">
         <div class="absolute -top-4 left-1/2 -translate-x-1/2">
-          <span class="bg-black text-white text-sm font-medium px-4 py-1 rounded-full">Most Popular</span>
+          <span class="bg-stella-500 text-white text-sm font-medium px-4 py-1 rounded-full">Most Popular</span>
         </div>
 
         <div class="mb-6">
@@ -426,7 +462,7 @@
           </li>
         </ul>
 
-        <button id="pro-checkout-btn" class="block w-full text-center bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors">
+        <button id="pro-checkout-btn" class="block w-full text-center bg-stella-500 text-white px-6 py-3 rounded-full font-medium hover:bg-stella-600 transition-colors">
           Start Pro
         </button>
       </div>
@@ -439,7 +475,7 @@
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Frequently asked questions</h2>
-      <p class="text-lg text-gray-600">Everything you need to know about PropertyFlow</p>
+      <p class="text-lg text-gray-600">Everything you need to know about Stella</p>
     </div>
 
     <div class="space-y-4">
@@ -452,7 +488,7 @@
           </svg>
         </button>
         <div class="faq-content hidden px-6 pb-5">
-          <p class="text-gray-600">Yes. PropertyFlow runs entirely in your browser as a Chrome extension. Invoice data goes directly from Gmail to your Google Sheet using your own Google account credentials. We never store your emails or invoice data on our servers.</p>
+          <p class="text-gray-600">Yes. Stella runs entirely in your browser as a Chrome extension. Invoice data goes directly from Gmail to your Google Sheet using your own Google account credentials. We never store your emails or invoice data on our servers.</p>
         </div>
       </div>
 
@@ -478,7 +514,7 @@
           </svg>
         </button>
         <div class="faq-content hidden px-6 pb-5">
-          <p class="text-gray-600">PropertyFlow works with most invoice emails - plain text, HTML formatted, and PDF attachments (Pro plan). Our AI learns vendor patterns over time, so it gets better at extracting data from your specific vendors the more you use it.</p>
+          <p class="text-gray-600">Stella works with most invoice emails—plain text, HTML formatted, and PDF attachments (Pro plan). Our AI learns vendor patterns over time, so it gets better at extracting data from your specific vendors the more you use it.</p>
         </div>
       </div>
 
@@ -518,14 +554,15 @@
       <!-- Brand -->
       <div class="md:col-span-1">
         <div class="flex items-center space-x-2 mb-4">
-          <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-            <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          <div class="w-8 h-8 bg-stella-500 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="12,2 14.5,9 22,9 16,13.5 18.5,21 12,16.5 5.5,21 8,13.5 2,9 9.5,9"/>
             </svg>
           </div>
-          <span class="text-xl font-semibold">PropertyFlow</span>
+          <span class="text-xl font-semibold">Stella</span>
         </div>
-        <p class="text-gray-400 text-sm">Automatically extract invoices from Gmail to Google Sheets.</p>
+        <p class="text-gray-400 text-sm mb-2">Automatically extract invoices from Gmail to Google Sheets.</p>
+        <p class="text-gray-500 text-xs">A <a href="https://stillkettle.com" class="hover:text-white transition-colors">Still Kettle</a> product</p>
       </div>
 
       <!-- Product -->
@@ -551,17 +588,16 @@
       <div>
         <h4 class="font-semibold mb-4">Connect</h4>
         <ul class="space-y-3 text-sm">
-          <li><a href="mailto:support@propertyflow.ai" class="text-gray-400 hover:text-white transition-colors">support@propertyflow.ai</a></li>
-          <li><a href="https://twitter.com/propertyflowai" class="text-gray-400 hover:text-white transition-colors">Twitter</a></li>
+          <li><a href="mailto:support@stillkettle.com" class="text-gray-400 hover:text-white transition-colors">support@stillkettle.com</a></li>
         </ul>
       </div>
     </div>
 
     <!-- Bottom -->
     <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center">
-      <p class="text-gray-400 text-sm">&copy; 2026 PropertyFlow. All rights reserved.</p>
+      <p class="text-gray-400 text-sm">&copy; 2026 Still Kettle. All rights reserved.</p>
       <div class="flex items-center space-x-4 mt-4 sm:mt-0">
-        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+        <a href="#coming-soon" class="text-gray-400 hover:text-white transition-colors">
           <span class="sr-only">Chrome Web Store</span>
           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 19.5a7.5 7.5 0 110-15 7.5 7.5 0 010 15z"/>
@@ -574,5 +610,16 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+  // Coming soon modal
+  document.querySelectorAll('a[href="#coming-soon"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = document.getElementById('coming-soon');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    });
+  });
+</script>
 </body>
 </html>
