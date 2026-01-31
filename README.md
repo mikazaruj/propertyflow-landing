@@ -1,67 +1,74 @@
-# PropertyFlow Landing Page
+# Still Kettle Web
 
-Static marketing site for PropertyFlow Chrome Extension.
+Landing pages for Still Kettle and its products.
+
+## Structure
+
+```
+/
+├── index.html          # stillkettle.com
+├── privacy.html        # stillkettle.com/privacy
+├── terms.html          # stillkettle.com/terms
+└── stella/
+    ├── index.html      # stella.stillkettle.com
+    ├── privacy.html    # stella.stillkettle.com/privacy
+    ├── terms.html      # stella.stillkettle.com/terms
+    ├── success.html    # Stripe success page
+    ├── js/
+    └── images/
+```
+
+## Deployment (Vercel)
+
+This repo uses a monorepo setup with separate Vercel projects:
+
+| Vercel Project | Domain | Root Directory |
+|----------------|--------|----------------|
+| stillkettle | stillkettle.com | `/` |
+| stella | stella.stillkettle.com | `/stella` |
+
+### Setup Instructions
+
+1. Create Vercel project for main site:
+   - Import repo, set Root Directory to `/`
+   - Add domain: `stillkettle.com`
+
+2. Create Vercel project for Stella:
+   - Import same repo, set Root Directory to `/stella`
+   - Add domain: `stella.stillkettle.com`
 
 ## Local Development
 
 ```bash
-cd landing
 python3 -m http.server 8080
 # Open http://localhost:8080
 ```
 
-## Deployment
+## Adding New Products
 
-This is a static site. Deploy to any static hosting:
-
-- **Cloudflare Pages**: Connect GitHub repo, set root to `landing/`
-- **Vercel**: Connect GitHub repo, set root to `landing/`
-- **Netlify**: Connect GitHub repo, set publish directory to `landing/`
-
-## Files
-
-- `index.html` - Main landing page
-- `success.html` - Post-checkout success page
-- `privacy.html` - Privacy policy
-- `terms.html` - Terms of service
-- `js/main.js` - JavaScript (mobile menu, FAQ accordion, Paddle)
-- `images/` - Image assets
-
-## Sections
-
-1. **Navigation** - Fixed header with mobile menu
-2. **Hero** - Headline, value prop, CTAs
-3. **How It Works** - 3-step visual explanation
-4. **Features** - 6 feature cards (2 marked Pro)
-5. **Pricing** - Free vs Pro comparison
-6. **FAQ** - 5 questions with accordion
-7. **Footer** - Links and legal
+1. Create folder: `/product-name/`
+2. Add `index.html`, `privacy.html`, `terms.html`
+3. Create new Vercel project pointing to `/product-name/`
+4. Add product card to main `index.html`
 
 ## TODO Before Launch
 
+### Still Kettle (main site)
+- [ ] Update legal pages with actual entity information
+- [ ] Add OG image
+- [ ] Set up stillkettle.com domain in Vercel
+
+### Stella
 - [ ] Replace hero screenshot placeholder with actual screenshot
 - [ ] Add real Chrome Web Store link to all "Install" buttons
 - [ ] Configure Paddle with production keys
-- [ ] Replace placeholder legal pages with real policies
-- [ ] Add OG image (`images/og-image.png`)
-- [ ] Set up custom domain
-- [ ] Update email/Twitter links in footer
+- [ ] Add OG image (`stella/images/og-image.png`)
+- [ ] Set up stella.stillkettle.com domain in Vercel
 
-## Paddle Integration
+## Paddle Integration (Stella)
 
-The Pro checkout button is configured in `js/main.js`. To enable:
+The Pro checkout button is configured in `stella/js/main.js`. To enable:
 
 1. Get your Paddle client token
-2. Add Paddle.js script to `index.html`
+2. Add Paddle.js script to `stella/index.html`
 3. Update the checkout button handler with your price ID
-
-```javascript
-// Example (uncomment and configure in main.js)
-Paddle.Checkout.open({
-  items: [{ priceId: 'pri_xxxxx', quantity: 1 }],
-  settings: {
-    successUrl: window.location.origin + '/success.html',
-    displayMode: 'overlay'
-  }
-});
-```

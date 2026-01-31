@@ -1,614 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - Stella | Gmail Invoice Scanner</title>
-    <meta name="description" content="Terms of Service for Stella - Gmail Invoice Scanner Chrome Extension by Still Kettle">
-    <meta name="robots" content="noindex, follow">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23000' width='100' height='100' rx='20'/%3E%3Cpath fill='%23fff' d='M50 20L30 60h15v20l20-40H50V20z'/%3E%3C/svg%3E">
-    <style>
-        html { scroll-behavior: smooth; }
-        .legal-section { counter-increment: section; }
-        .legal-section > h2::before { content: counter(section) ". "; }
-        body { counter-reset: section; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service - Still Kettle</title>
+  <meta name="description" content="Terms of Service for Still Kettle and its products.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23000' width='100' height='100' rx='20'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='white'>SK</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>body { font-family: 'Inter', sans-serif; }</style>
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased">
-    <!-- Header -->
-    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <a href="/" class="flex items-center space-x-2">
-                    <svg class="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                    </svg>
-                    <span class="text-xl font-bold text-gray-900">Stella</span>
-                </a>
-                <nav class="flex items-center space-x-6">
-                    <a href="/privacy.html" class="text-sm text-gray-600 hover:text-gray-700 transition-colors">Privacy Policy</a>
-                    <a href="/" class="text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 px-4 py-2 rounded-lg transition-colors">Back to Home</a>
-                </nav>
-            </div>
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <a href="/" class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+          <span class="text-white text-xs font-bold">SK</span>
         </div>
-    </header>
+        <span class="font-bold text-xl text-gray-900">Still Kettle</span>
+      </a>
+      <a href="/" class="text-sm text-gray-600 hover:text-gray-900">← Back to Home</a>
+    </div>
+  </div>
+</nav>
 
-    <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Page Header -->
-        <div class="mb-12">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">Terms of Service</h1>
-            <p class="text-lg text-gray-600">Effective Date: February 1, 2026</p>
-            <p class="text-sm text-gray-500 mt-2">Last Updated: January 31, 2026</p>
-        </div>
+<div class="h-16"></div>
 
-        <!-- Quick Navigation -->
-        <div class="bg-white rounded-xl border border-gray-200 p-6 mb-10">
-            <h2 class="text-lg font-semibold text-gray-900 mb-4">Quick Navigation</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
-                <a href="#service-description" class="text-gray-700 hover:text-gray-800 hover:underline">1. Service Description</a>
-                <a href="#eligibility" class="text-gray-700 hover:text-gray-800 hover:underline">2. Eligibility</a>
-                <a href="#account-registration" class="text-gray-700 hover:text-gray-800 hover:underline">3. Account Registration</a>
-                <a href="#subscription-plans" class="text-gray-700 hover:text-gray-800 hover:underline">4. Subscription Plans</a>
-                <a href="#payment-terms" class="text-gray-700 hover:text-gray-800 hover:underline">5. Payment Terms</a>
-                <a href="#cancellation" class="text-gray-700 hover:text-gray-800 hover:underline">6. Cancellation Policy</a>
-                <a href="#money-back" class="text-gray-700 hover:text-gray-800 hover:underline">7. Money-Back Guarantee</a>
-                <a href="#acceptable-use" class="text-gray-700 hover:text-gray-800 hover:underline">8. Acceptable Use</a>
-                <a href="#intellectual-property" class="text-gray-700 hover:text-gray-800 hover:underline">9. Intellectual Property</a>
-                <a href="#disclaimers" class="text-gray-700 hover:text-gray-800 hover:underline">10. Disclaimers</a>
-                <a href="#limitation-liability" class="text-gray-700 hover:text-gray-800 hover:underline">11. Limitation of Liability</a>
-                <a href="#eu-consumer-rights" class="text-gray-700 hover:text-gray-800 hover:underline">12. EU Consumer Rights</a>
-                <a href="#governing-law" class="text-gray-700 hover:text-gray-800 hover:underline">13. Governing Law</a>
-                <a href="#dispute-resolution" class="text-gray-700 hover:text-gray-800 hover:underline">14. Dispute Resolution</a>
-                <a href="#force-majeure" class="text-gray-700 hover:text-gray-800 hover:underline">15. Force Majeure</a>
-                <a href="#severability" class="text-gray-700 hover:text-gray-800 hover:underline">16. Severability</a>
-                <a href="#changes" class="text-gray-700 hover:text-gray-800 hover:underline">17. Changes to Terms</a>
-                <a href="#contact" class="text-gray-700 hover:text-gray-800 hover:underline">18. Contact Information</a>
-            </div>
-        </div>
+<!-- Content -->
+<main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">Terms of Service</h1>
+  <p class="text-gray-500 mb-8">Last updated: January 31, 2026</p>
 
-        <!-- Introduction -->
-        <div class="prose prose-gray max-w-none mb-10">
-            <div class="bg-gray-100 border border-gray-200 rounded-xl p-6">
-                <p class="text-gray-700 leading-relaxed">
-                    Welcome to Stella - Gmail Invoice Scanner ("Stella", "the Service", "we", "us", or "our"), a Chrome browser extension operated by <strong>Still Kettle</strong>, a company registered in the European Union. These Terms of Service ("Terms") constitute a legally binding agreement between you ("User", "you", or "your") and Still Kettle governing your access to and use of Stella.
-                </p>
-                <p class="text-gray-700 leading-relaxed mt-4">
-                    By installing, accessing, or using Stella, you acknowledge that you have read, understood, and agree to be bound by these Terms and our <a href="/privacy.html" class="text-gray-700 hover:text-gray-800 underline">Privacy Policy</a>. If you do not agree to these Terms, you must not use the Service.
-                </p>
-            </div>
-        </div>
+  <div class="prose prose-gray max-w-none">
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-900 mb-4">Overview</h2>
+      <p class="text-gray-700 mb-4">
+        Welcome to Still Kettle. These Terms of Service ("Terms") govern your use of the stillkettle.com website. By accessing our website, you agree to these Terms.
+      </p>
+      <p class="text-gray-700">
+        Each of our products has its own specific terms of service. Please refer to the relevant product's terms for detailed information.
+      </p>
+    </section>
 
-        <!-- Legal Sections -->
-        <div class="space-y-10">
-            
-            <!-- Section 1: Service Description -->
-            <section id="service-description" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Service Description</h2>
-                <div class="prose prose-gray max-w-none">
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        Stella is a Chrome browser extension designed to help users scan, extract, and organize invoice data from their Gmail accounts. The Service provides the following functionality:
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li>Automated scanning of Gmail emails to identify invoices and bills</li>
-                        <li>AI-powered extraction of invoice data including vendor names, amounts, dates, and other relevant fields</li>
-                        <li>Export capabilities to Google Sheets for data organization and analysis</li>
-                        <li>PDF attachment processing and data extraction (Pro plan)</li>
-                        <li>Vendor management and categorization</li>
-                        <li>Scheduled automatic scanning (Pro plan)</li>
-                    </ul>
-                    <p class="text-gray-700 leading-relaxed">
-                        The Service operates as a client-side browser extension with secure cloud processing. We access your Gmail data solely through Google's official OAuth 2.0 authentication system and only with your explicit permission.
-                    </p>
-                </div>
-            </section>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-900 mb-4">Our Products</h2>
+      <ul class="list-disc pl-6 text-gray-700 space-y-2">
+        <li><a href="https://stella.stillkettle.com/terms.html" class="text-gray-900 hover:underline">Stella - Gmail Invoice Scanner</a> - See product-specific terms</li>
+      </ul>
+    </section>
 
-            <!-- Section 2: Eligibility -->
-            <section id="eligibility" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Eligibility</h2>
-                <div class="prose prose-gray max-w-none">
-                    <p class="text-gray-700 leading-relaxed mb-4">To use Stella, you must:</p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li><strong>Age Requirement:</strong> Be at least 16 years of age. If you are under 18, you confirm that you have obtained parental or guardian consent to use the Service.</li>
-                        <li><strong>Google Account:</strong> Have a valid Google account with access to Gmail.</li>
-                        <li><strong>Browser Compatibility:</strong> Use a compatible version of Google Chrome or Chromium-based browser that supports Manifest V3 extensions.</li>
-                        <li><strong>Legal Capacity:</strong> Have the legal capacity to enter into a binding agreement under applicable law.</li>
-                        <li><strong>Compliance:</strong> Agree to comply with these Terms and all applicable laws and regulations.</li>
-                    </ul>
-                    <p class="text-gray-700 leading-relaxed">
-                        By using the Service, you represent and warrant that you meet all eligibility requirements. We reserve the right to refuse service, terminate accounts, or cancel subscriptions at our discretion if we reasonably believe you do not meet these requirements.
-                    </p>
-                </div>
-            </section>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-900 mb-4">Intellectual Property</h2>
+      <p class="text-gray-700">
+        All content on stillkettle.com, including text, graphics, logos, and software, is the property of Still Kettle and is protected by applicable intellectual property laws.
+      </p>
+    </section>
 
-            <!-- Section 3: Account Registration -->
-            <section id="account-registration" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Account Registration and Security</h2>
-                <div class="prose prose-gray max-w-none">
-                    <h3 class="text-lg font-semibold text-gray-900 mt-4 mb-2">3.1 Google OAuth Authentication</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        Stella uses Google OAuth 2.0 for secure authentication. When you connect your Google account:
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li>You authorize Stella to access specific Gmail data necessary for the Service's functionality</li>
-                        <li>We never see, store, or have access to your Google password</li>
-                        <li>OAuth tokens are stored securely and encrypted</li>
-                        <li>You can revoke access at any time through your Google Account security settings</li>
-                    </ul>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">3.2 Account Security</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">You are responsible for:</p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li>Maintaining the security of your Google account and any devices used to access the Service</li>
-                        <li>All activities that occur under your account</li>
-                        <li>Immediately notifying us of any unauthorized use or security breach</li>
-                    </ul>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">3.3 Data Permissions</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        The Service requires read-only access to your Gmail messages to scan for invoices. We request only the minimum permissions necessary to provide the Service. Detailed information about data handling is available in our <a href="/privacy.html" class="text-gray-700 hover:text-gray-800 underline">Privacy Policy</a>.
-                    </p>
-                </div>
-            </section>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-900 mb-4">Limitation of Liability</h2>
+      <p class="text-gray-700">
+        This website is provided "as is" without warranties of any kind. Still Kettle shall not be liable for any damages arising from your use of this website.
+      </p>
+    </section>
 
-            <!-- Section 4: Subscription Plans -->
-            <section id="subscription-plans" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Subscription Plans and Pricing</h2>
-                <div class="prose prose-gray max-w-none">
-                    <p class="text-gray-700 leading-relaxed mb-6">Stella offers the following subscription plans:</p>
-                    
-                    <!-- Free Plan -->
-                    <div class="bg-gray-50 rounded-lg p-5 mb-4 border border-gray-200">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Free Plan - €0/month</h3>
-                        <ul class="list-disc list-inside text-gray-700 space-y-1">
-                            <li>Up to 100 email scans per month</li>
-                            <li>Track up to 3 vendors</li>
-                            <li>6 extraction fields per invoice</li>
-                            <li>Export to Google Sheets</li>
-                            <li>Manual scanning only</li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Pro Plan -->
-                    <div class="bg-gray-100 rounded-lg p-5 mb-6 border border-gray-200">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-3">Pro Plan - €12/month</h3>
-                        <ul class="list-disc list-inside text-gray-700 space-y-1">
-                            <li>Unlimited email scans</li>
-                            <li>Track up to 10 vendors</li>
-                            <li>All 16 extraction fields</li>
-                            <li>Up to 100 PDF attachments processed per month</li>
-                            <li>Scheduled automatic scans</li>
-                            <li>Priority support</li>
-                            <li>Export to Google Sheets</li>
-                        </ul>
-                    </div>
-                    
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        <strong>Pricing Changes:</strong> We reserve the right to modify pricing with at least 30 days' notice. Price changes will not affect your current billing period and will only apply upon renewal. Existing subscribers will be notified via email before any price changes take effect.
-                    </p>
-                    <p class="text-gray-700 leading-relaxed">
-                        <strong>Plan Limits:</strong> Usage limits reset at the beginning of each billing cycle. Unused allowances do not roll over to subsequent periods.
-                    </p>
-                </div>
-            </section>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-900 mb-4">Governing Law</h2>
+      <p class="text-gray-700">
+        These Terms are governed by the laws of the European Union. Any disputes shall be resolved in the courts of [Your Jurisdiction - TO BE UPDATED].
+      </p>
+    </section>
 
-            <!-- Section 5: Payment Terms -->
-            <section id="payment-terms" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Payment Terms</h2>
-                <div class="prose prose-gray max-w-none">
-                    <h3 class="text-lg font-semibold text-gray-900 mt-4 mb-2">5.1 Payment Processor</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        All payments are processed securely through <strong>Paddle</strong>, our authorized Merchant of Record. Paddle handles all payment processing, invoicing, VAT/tax collection, and compliance on our behalf. When you make a purchase, you are entering into an agreement with Paddle for payment processing.
-                    </p>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">5.2 Billing</h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li>Pro subscriptions are billed monthly in advance</li>
-                        <li>All prices are displayed in Euros (EUR) and include applicable VAT for EU customers</li>
-                        <li>Paddle may display prices in your local currency for convenience</li>
-                        <li>Invoices are provided by Paddle and sent to your registered email address</li>
-                    </ul>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">5.3 Payment Methods</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        Paddle accepts various payment methods including major credit cards, PayPal, and other regional payment methods. The available payment methods may vary based on your location.
-                    </p>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">5.4 Failed Payments</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        If a payment fails, Paddle will attempt to process the payment again. If payment continues to fail, your subscription may be suspended or downgraded to the Free plan. You will be notified of any payment issues via email.
-                    </p>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">5.5 Taxes</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Paddle, as Merchant of Record, is responsible for calculating and collecting applicable VAT, GST, or other sales taxes based on your location. Tax amounts will be clearly displayed during checkout.
-                    </p>
-                </div>
-            </section>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-900 mb-4">Contact</h2>
+      <p class="text-gray-700">
+        For questions about these Terms, contact us at: <a href="mailto:legal@stillkettle.com" class="text-gray-900 hover:underline">legal@stillkettle.com</a>
+      </p>
+    </section>
 
-            <!-- Section 6: Cancellation -->
-            <section id="cancellation" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Cancellation Policy</h2>
-                <div class="prose prose-gray max-w-none">
-                    <h3 class="text-lg font-semibold text-gray-900 mt-4 mb-2">6.1 How to Cancel</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        You may cancel your Pro subscription at any time through:
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li>The subscription management section in the Stella extension</li>
-                        <li>The Paddle customer portal (link provided in your billing emails)</li>
-                        <li>Contacting us at <a href="mailto:support@stillkettle.com" class="text-gray-700 hover:text-gray-800 underline">support@stillkettle.com</a></li>
-                    </ul>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">6.2 Effect of Cancellation</h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li>Your subscription will remain active until the end of your current billing period</li>
-                        <li>After the billing period ends, your account will be downgraded to the Free plan</li>
-                        <li>You will retain access to your previously scanned data</li>
-                        <li>No partial refunds are provided for unused time in the current billing period (except as required by law or our money-back guarantee)</li>
-                    </ul>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">6.3 Reactivation</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        You may reactivate your Pro subscription at any time. Your previous settings and data (subject to our data retention policies) will be restored upon reactivation.
-                    </p>
-                </div>
-            </section>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-900 mb-4">Operator</h2>
+      <p class="text-gray-700">
+        Still Kettle<br>
+        [Your Name / Address - TO BE UPDATED]<br>
+        European Union
+      </p>
+    </section>
+  </div>
+</main>
 
-            <!-- Section 7: Money-Back Guarantee -->
-            <section id="money-back" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">14-Day Money-Back Guarantee</h2>
-                <div class="prose prose-gray max-w-none">
-                    <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
-                        <p class="text-green-800 font-medium">
-                            We offer a 14-day money-back guarantee for new Pro subscriptions.
-                        </p>
-                    </div>
-                    <h3 class="text-lg font-semibold text-gray-900 mt-4 mb-2">7.1 Eligibility</h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li>Available for first-time Pro subscribers only</li>
-                        <li>Refund request must be made within 14 days of the initial subscription purchase</li>
-                        <li>Not applicable to subscription renewals</li>
-                    </ul>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">7.2 How to Request a Refund</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        To request a refund under this guarantee, contact us at <a href="mailto:support@stillkettle.com" class="text-gray-700 hover:text-gray-800 underline">support@stillkettle.com</a> with your account email and reason for the refund request. We aim to process refunds within 5-10 business days.
-                    </p>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">7.3 Refund Processing</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Approved refunds will be processed through Paddle to your original payment method. The time for the refund to appear in your account depends on your payment provider and may take up to 10 business days.
-                    </p>
-                </div>
-            </section>
+<!-- Footer -->
+<footer class="border-t border-gray-200 py-8">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
+    <p>© 2026 Still Kettle. All rights reserved.</p>
+  </div>
+</footer>
 
-            <!-- Section 8: Acceptable Use -->
-            <section id="acceptable-use" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Acceptable Use Policy</h2>
-                <div class="prose prose-gray max-w-none">
-                    <p class="text-gray-700 leading-relaxed mb-4">When using Stella, you agree NOT to:</p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li>Use the Service for any illegal purpose or in violation of any applicable laws</li>
-                        <li>Attempt to gain unauthorized access to other users' accounts or data</li>
-                        <li>Reverse engineer, decompile, or disassemble any part of the Service</li>
-                        <li>Use automated systems or bots to access the Service beyond its intended functionality</li>
-                        <li>Circumvent or attempt to circumvent usage limits or access controls</li>
-                        <li>Share your account credentials or allow others to access your account</li>
-                        <li>Use the Service to collect data from emails you do not have authorization to access</li>
-                        <li>Interfere with or disrupt the Service or servers connected to the Service</li>
-                        <li>Upload or transmit viruses, malware, or other harmful code</li>
-                        <li>Use the Service in a way that could damage, disable, or impair the Service</li>
-                        <li>Resell, sublicense, or commercially exploit the Service without our written consent</li>
-                        <li>Violate Google's Terms of Service or Gmail policies</li>
-                    </ul>
-                    <p class="text-gray-700 leading-relaxed">
-                        Violation of this Acceptable Use Policy may result in immediate suspension or termination of your account without refund.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Section 9: Intellectual Property -->
-            <section id="intellectual-property" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Intellectual Property</h2>
-                <div class="prose prose-gray max-w-none">
-                    <h3 class="text-lg font-semibold text-gray-900 mt-4 mb-2">9.1 Our Intellectual Property</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        The Service, including but not limited to its software, code, design, graphics, logos, user interface, and documentation, is owned by Still Kettle and protected by copyright, trademark, and other intellectual property laws. The Stella name, logo, and all related marks are trademarks of Still Kettle.
-                    </p>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">9.2 License Grant</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to use the Service for your personal or internal business purposes. This license does not include the right to:
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li>Modify, copy, or create derivative works of the Service</li>
-                        <li>Sublicense, sell, or transfer the Service to third parties</li>
-                        <li>Use the Service for competitive analysis or to build a competing product</li>
-                    </ul>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">9.3 Your Data</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        You retain all ownership rights to your data. By using the Service, you grant us a limited license to process your data solely for the purpose of providing the Service to you. We do not claim ownership of any data you process through the Service.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Section 10: Disclaimers -->
-            <section id="disclaimers" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Disclaimer of Warranties</h2>
-                <div class="prose prose-gray max-w-none">
-                    <div class="bg-gray-100 border border-gray-200 rounded-lg p-4 mb-4">
-                        <p class="text-gray-800 font-medium">
-                            Important: Please read this section carefully as it affects your legal rights.
-                        </p>
-                    </div>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-4 mb-2">10.1 Service Provided "As Is"</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.
-                    </p>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">10.2 No Guarantee of Accuracy</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        <strong>We do not guarantee 100% accuracy in data extraction.</strong> The Service uses AI and machine learning technologies that may occasionally produce errors, misread data, or fail to extract information correctly. You acknowledge that:
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li>Extracted data should be verified before being used for financial, legal, or other important decisions</li>
-                        <li>The Service is intended as a productivity tool, not a replacement for professional accounting or legal services</li>
-                        <li>Results may vary based on email format, invoice structure, and image quality</li>
-                    </ul>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">10.3 Third-Party Services</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        The Service integrates with third-party services including Google (Gmail, Sheets) and Paddle (payments). We are not responsible for the availability, accuracy, or reliability of these third-party services.
-                    </p>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">10.4 No Professional Advice</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        The Service does not provide accounting, tax, legal, or financial advice. Any data processed through the Service should not be considered a substitute for professional advice. Always consult qualified professionals for financial and legal matters.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Section 11: Limitation of Liability -->
-            <section id="limitation-liability" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Limitation of Liability</h2>
-                <div class="prose prose-gray max-w-none">
-                    <h3 class="text-lg font-semibold text-gray-900 mt-4 mb-2">11.1 Exclusion of Damages</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL STILL KETTLE, ITS DIRECTORS, EMPLOYEES, PARTNERS, AGENTS, SUPPLIERS, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION:
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li>Loss of profits, revenue, or data</li>
-                        <li>Business interruption</li>
-                        <li>Cost of substitute services</li>
-                        <li>Inaccurate data extraction results</li>
-                        <li>Unauthorized access to or alteration of your data</li>
-                    </ul>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">11.2 Cap on Liability</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, OUR TOTAL LIABILITY FOR ALL CLAIMS ARISING OUT OF OR RELATING TO THESE TERMS OR THE SERVICE SHALL NOT EXCEED THE GREATER OF: (A) THE AMOUNT YOU PAID TO US FOR THE SERVICE IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM, OR (B) ONE HUNDRED EUROS (€100).
-                    </p>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">11.3 Exceptions</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        The limitations in this section do not apply to: (a) liability arising from our gross negligence or willful misconduct; (b) death or personal injury caused by our negligence; (c) fraud or fraudulent misrepresentation; or (d) any other liability that cannot be excluded or limited under applicable law, including mandatory consumer protection laws in your jurisdiction.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Section 12: EU Consumer Rights -->
-            <section id="eu-consumer-rights" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">EU Consumer Rights</h2>
-                <div class="prose prose-gray max-w-none">
-                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-                        <p class="text-blue-800 font-medium">
-                            If you are a consumer in the European Union, you have specific rights under EU consumer protection law.
-                        </p>
-                    </div>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-4 mb-2">12.1 Right of Withdrawal (14-Day Cooling-Off Period)</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        Under the EU Consumer Rights Directive (2011/83/EU), you have the right to withdraw from your purchase within 14 days of subscribing, without giving any reason. To exercise this right, you must inform us of your decision by a clear statement (e.g., email to <a href="mailto:legal@stillkettle.com" class="text-gray-700 hover:text-gray-800 underline">legal@stillkettle.com</a>).
-                    </p>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">12.2 Exception for Digital Content</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        If you have started using the Service during the withdrawal period, you acknowledge that:
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li>You have expressly consented to the immediate performance of the Service</li>
-                        <li>You acknowledge that you lose your right of withdrawal once the Service has been fully performed</li>
-                        <li>If you withdraw before full performance, you may be required to pay for the Service provided up to the point of withdrawal</li>
-                    </ul>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        Despite the above, our 14-day money-back guarantee provides protection beyond the statutory minimum.
-                    </p>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">12.3 Consumer Guarantees</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        Nothing in these Terms affects your statutory rights as a consumer under EU law, including rights under the Consumer Sales Directive and Digital Content Directive. These rights cannot be waived or limited by contract.
-                    </p>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">12.4 Model Withdrawal Form</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        To withdraw from your contract, you may use the following text (not mandatory): "I hereby give notice that I withdraw from my contract for the provision of Stella Pro subscription service. Ordered on [date]. Name: [your name]. Email: [your email]. Date: [today's date]." Send to: <a href="mailto:legal@stillkettle.com" class="text-gray-700 hover:text-gray-800 underline">legal@stillkettle.com</a>
-                    </p>
-                </div>
-            </section>
-
-            <!-- Section 13: Governing Law -->
-            <section id="governing-law" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Governing Law</h2>
-                <div class="prose prose-gray max-w-none">
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        These Terms shall be governed by and construed in accordance with the laws of the European Union and the member state in which Still Kettle is registered, without regard to conflict of law principles.
-                    </p>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        For consumers residing in the EU, you will benefit from any mandatory provisions of the law of the country in which you are resident. Nothing in these Terms, including the choice of law provision, affects your rights as a consumer to rely on such mandatory provisions of local law.
-                    </p>
-                    <p class="text-gray-700 leading-relaxed">
-                        Any disputes shall be subject to the exclusive jurisdiction of the courts in Still Kettle's registered member state, except where consumers are entitled under applicable law to bring proceedings in their country of residence.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Section 14: Dispute Resolution -->
-            <section id="dispute-resolution" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Dispute Resolution</h2>
-                <div class="prose prose-gray max-w-none">
-                    <h3 class="text-lg font-semibold text-gray-900 mt-4 mb-2">14.1 Informal Resolution</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        Before initiating any formal dispute resolution, you agree to first contact us at <a href="mailto:legal@stillkettle.com" class="text-gray-700 hover:text-gray-800 underline">legal@stillkettle.com</a> to attempt to resolve the dispute informally. We will attempt to resolve any disputes within 30 days of receipt.
-                    </p>
-                    
-                    <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-2">14.2 EU Online Dispute Resolution (ODR)</h3>
-                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-                        <p class="text-gray-700 leading-relaxed">
-                            If you are a consumer in the European Union and are not satisfied with how we handled your complaint, you may use the European Commission's Online Dispute Resolution (ODR) platform to resolve the dispute. The ODR platform is available at:
-                        </p>
-                        <p class="mt-2">
-                            <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-gray-800 underline font-medium">https://ec.europa.eu/consumers/odr</a>
-                        </p>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed">
-                        Our email address for ODR purposes is: <a href="mailto:legal@stillkettle.com" class="text-gray-700 hover:text-gray-800 underline">legal@stillkettle.com</a>
-                    </p>
-                </div>
-            </section>
-
-            <!-- Section 15: Force Majeure -->
-            <section id="force-majeure" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Force Majeure</h2>
-                <div class="prose prose-gray max-w-none">
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        Neither party shall be liable for any failure or delay in performing its obligations under these Terms if such failure or delay results from circumstances beyond the reasonable control of that party, including but not limited to:
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li>Acts of God, natural disasters, or extreme weather events</li>
-                        <li>War, terrorism, riots, or civil unrest</li>
-                        <li>Government actions, laws, or regulations</li>
-                        <li>Epidemics or pandemics</li>
-                        <li>Power failures or internet outages beyond our control</li>
-                        <li>Third-party service failures (including Google or Paddle outages)</li>
-                        <li>Cyber attacks or security breaches affecting infrastructure providers</li>
-                    </ul>
-                    <p class="text-gray-700 leading-relaxed">
-                        The affected party shall promptly notify the other party of such circumstances and shall use reasonable efforts to minimize the impact and duration of any such event.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Section 16: Severability -->
-            <section id="severability" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Severability</h2>
-                <div class="prose prose-gray max-w-none">
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        If any provision of these Terms is held to be invalid, illegal, or unenforceable by a court of competent jurisdiction:
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li>That provision shall be modified to the minimum extent necessary to make it valid, legal, and enforceable while preserving its original intent</li>
-                        <li>If modification is not possible, the provision shall be severed from these Terms</li>
-                        <li>All other provisions of these Terms shall remain in full force and effect</li>
-                        <li>The invalidity of any provision in one jurisdiction shall not affect its validity in other jurisdictions</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Section 17: Changes to Terms -->
-            <section id="changes" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Changes to Terms</h2>
-                <div class="prose prose-gray max-w-none">
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        We reserve the right to modify these Terms at any time. When we make changes:
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li><strong>Material Changes:</strong> We will provide at least 30 days' notice before material changes take effect, via email and/or prominent notice within the Service</li>
-                        <li><strong>Non-Material Changes:</strong> Minor changes may be made without prior notice, with the updated Terms posted on our website</li>
-                        <li><strong>Effective Date:</strong> All changes will include a new "Last Updated" date at the top of these Terms</li>
-                    </ul>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        Your continued use of the Service after changes become effective constitutes acceptance of the revised Terms. If you do not agree with any changes, you must stop using the Service and cancel your subscription before the changes take effect.
-                    </p>
-                    <p class="text-gray-700 leading-relaxed">
-                        We encourage you to periodically review these Terms to stay informed of updates. Previous versions of the Terms may be requested by contacting us.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Section 18: Contact Information -->
-            <section id="contact" class="legal-section bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Contact Information</h2>
-                <div class="prose prose-gray max-w-none">
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        If you have any questions, concerns, or requests regarding these Terms, please contact us:
-                    </p>
-                    <div class="bg-gray-50 rounded-lg p-5 border border-gray-200">
-                        <p class="font-semibold text-gray-900 mb-2">Still Kettle</p>
-                        <p class="text-gray-700 mb-4">Operating Stella - Gmail Invoice Scanner</p>
-                        <div class="space-y-2">
-                            <p class="text-gray-700">
-                                <strong>Legal Inquiries:</strong><br>
-                                <a href="mailto:legal@stillkettle.com" class="text-gray-700 hover:text-gray-800 underline">legal@stillkettle.com</a>
-                            </p>
-                            <p class="text-gray-700">
-                                <strong>General Support:</strong><br>
-                                <a href="mailto:support@stillkettle.com" class="text-gray-700 hover:text-gray-800 underline">support@stillkettle.com</a>
-                            </p>
-                            <p class="text-gray-700">
-                                <strong>Website:</strong><br>
-                                <a href="https://stella.stillkettle.com" class="text-gray-700 hover:text-gray-800 underline">stella.stillkettle.com</a>
-                            </p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 text-sm mt-4">
-                        We aim to respond to all inquiries within 5 business days.
-                    </p>
-                </div>
-            </section>
-
-        </div>
-
-        <!-- Acknowledgment -->
-        <div class="mt-12 bg-gray-100 border border-gray-200 rounded-xl p-6">
-            <h2 class="text-xl font-bold text-gray-900 mb-3">Acknowledgment</h2>
-            <p class="text-gray-700 leading-relaxed">
-                By installing, accessing, or using Stella, you acknowledge that you have read these Terms of Service, understood them, and agree to be bound by them. If you are using the Service on behalf of an organization, you represent and warrant that you have the authority to bind that organization to these Terms.
-            </p>
-        </div>
-
-        <!-- Document Footer -->
-        <div class="mt-8 pt-8 border-t border-gray-200 text-center text-sm text-gray-500">
-            <p>Terms of Service Version 1.0</p>
-            <p>Document ID: TOS-2026-02-01</p>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 mt-16">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div class="flex items-center space-x-2">
-                    <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                    </svg>
-                    <span class="text-gray-900 font-semibold">Stella</span>
-                    <span class="text-gray-500">by Still Kettle</span>
-                </div>
-                <div class="flex items-center space-x-6 text-sm">
-                    <a href="/privacy.html" class="text-gray-600 hover:text-gray-700 transition-colors">Privacy Policy</a>
-                    <a href="/terms.html" class="text-gray-700 font-medium">Terms of Service</a>
-                    <a href="mailto:support@stillkettle.com" class="text-gray-600 hover:text-gray-700 transition-colors">Contact</a>
-                </div>
-            </div>
-            <div class="mt-6 text-center text-sm text-gray-500">
-                <p>&copy; 2026 Still Kettle. All rights reserved.</p>
-                <p class="mt-1">Stella - Gmail Invoice Scanner is not affiliated with or endorsed by Google.</p>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
