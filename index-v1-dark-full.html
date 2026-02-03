@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Still Kettle - Software Tools for Productivity</title>
+  <meta name="description" content="We build the tools we always needed — now possible — without noise. Simple software, thoughtfully made.">
+  <meta name="keywords" content="software tools, chrome extensions, productivity, automation, AI tools">
+  <meta name="author" content="Still Kettle">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://stillkettle.com/">
+  <meta property="og:title" content="Still Kettle - Software Tools">
+  <meta property="og:description" content="We build the tools we always needed — now possible — without noise.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23fff' width='100' height='100' rx='20'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='%230a1628'>SK</text></svg>">
+
+  <!-- Fonts -->
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'display': ['Satoshi', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            'body': ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            'sk': {
+              'deep': '#0a1628',
+              'navy': '#0f2847',
+              'blue': '#1a4a7a',
+              'cyan': '#5ab4c5',
+              'light': '#8ed4e0',
+              'foam': '#c8eef4',
+            }
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.6s ease-out forwards',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Satoshi', 'Plus Jakarta Sans', system-ui, sans-serif; }
+
+    .stagger-1 { animation-delay: 0ms; }
+    .stagger-2 { animation-delay: 100ms; }
+    .stagger-3 { animation-delay: 200ms; }
+    .stagger-4 { animation-delay: 300ms; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #5ab4c5 0%, #8ed4e0 50%, #c8eef4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .bg-texture {
+      position: relative;
+    }
+
+    .bg-texture::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('assets/images/bg-dark-marble.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+    }
+
+    .bg-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(0,10,20,0.5) 0%,
+        rgba(0,10,20,0.3) 50%,
+        rgba(0,10,20,0.6) 100%
+      );
+    }
+
+    /* Section backgrounds for visual rhythm */
+    .section-alt {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+<body class="bg-texture text-white antialiased overflow-x-hidden">
+
+<!-- Overlay -->
+<div class="fixed inset-0 bg-overlay pointer-events-none" style="z-index: -1;"></div>
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-sk-deep/60 backdrop-blur-md border-b border-white/10">
+  <div class="max-w-5xl mx-auto px-6 py-4">
+    <div class="flex justify-between items-center">
+      <a href="/" class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+          <span class="text-sk-deep font-bold text-sm">SK</span>
+        </div>
+        <span class="font-display font-bold text-lg text-white">Still Kettle</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <a href="#products" class="text-sm font-medium text-white/60 hover:text-white transition-colors hidden sm:block">Products</a>
+        <a href="#about" class="text-sm font-medium text-white/60 hover:text-white transition-colors hidden sm:block">About</a>
+        <a href="mailto:hello@stillkettle.com" class="px-4 py-2 text-sm font-medium text-sk-deep bg-white rounded-full hover:bg-sk-foam transition-all">
+          Contact
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-16">
+  <div class="text-center mb-16 max-w-4xl mx-auto relative z-10">
+    <h1 class="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6 opacity-0 animate-fade-up stagger-1">
+      Good things<br>
+      take time to <span class="gradient-text">brew</span>
+    </h1>
+    <p class="text-lg sm:text-xl text-white/70 max-w-xl mx-auto mb-10 opacity-0 animate-fade-up stagger-2">
+      We build AI-powered tools we wished existed. Designed to work smarter — so you can too.
+    </p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-up stagger-3">
+      <a href="https://stella.stillkettle.com" class="px-6 py-3 text-sm font-medium text-sk-deep bg-white rounded-full border-2 border-white hover:bg-sk-foam transition-all">
+        Try Stella — It's Free
+      </a>
+      <button onclick="openContactModal()" class="px-6 py-3 text-sm font-medium text-white bg-white/10 backdrop-blur-sm rounded-full border-2 border-white/30 hover:border-white/60 hover:bg-white/20 transition-all">
+        Share an Idea
+      </button>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-up stagger-4">
+    <a href="#philosophy" class="text-white/40 hover:text-white/70 transition-colors">
+      <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- Philosophy Section -->
+<section id="philosophy" class="relative py-24 px-6 section-alt">
+  <div class="max-w-2xl mx-auto text-center relative z-10">
+    <p class="text-lg sm:text-xl text-white/70 leading-relaxed mb-6">
+      We believe software should do the heavy lifting for you. Our tools are powered by AI to automate tedious tasks and surface what matters.
+    </p>
+    <p class="text-lg sm:text-xl text-white/70 leading-relaxed mb-6">
+      We're not chasing trends or building for investors. We make software for ourselves first — then share it with others who feel the same friction.
+    </p>
+    <p class="text-xl sm:text-2xl font-display font-bold text-white">
+      Simple tools. Thoughtfully made. No noise.
+    </p>
+  </div>
+</section>
+
+<!-- Products Section -->
+<section id="products" class="relative py-24 px-6">
+  <div class="max-w-3xl mx-auto relative z-10">
+    <h2 class="font-display text-3xl sm:text-4xl font-bold text-center text-white mb-16">What we're making</h2>
+
+    <div class="space-y-6">
+      <!-- Stella Card -->
+      <div class="relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-sk-cyan via-sk-light to-sk-foam rounded-2xl transform rotate-1 scale-[1.02] opacity-50 blur-sm"></div>
+        <a href="https://stella.stillkettle.com" class="relative block w-full p-8 bg-white rounded-2xl shadow-2xl hover:shadow-[0_25px_60px_-12px_rgba(90,180,197,0.4)] hover:-translate-y-1 transition-all group">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 bg-sk-deep rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <h3 class="font-display font-bold text-xl text-gray-900">Stella</h3>
+                  <span class="px-2 py-0.5 text-xs font-semibold text-white bg-gradient-to-r from-sk-blue to-sk-cyan rounded-full">LIVE</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                  AI-powered invoice scanner for Gmail. Automatically extracts and organizes your invoice data — so you don't have to. Built for freelancers, small teams, and anyone tired of manual bookkeeping.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-sk-deep font-medium group-hover:gap-3 transition-all flex-shrink-0">
+              Try Stella
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Coming Soon Card -->
+      <div class="w-full p-8 border-2 border-dashed border-white/30 bg-white/5 backdrop-blur-sm rounded-2xl">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-7 h-7 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                <path stroke-linecap="round" stroke-width="2" d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-xl text-white/60 mb-1">Something new is brewing</h3>
+              <p class="text-white/50">
+                Another AI-powered tool is in the works. Sign up to be the first to know when it's ready.
+              </p>
+            </div>
+          </div>
+          <a href="mailto:hello@stillkettle.com?subject=Notify me about new tools" class="flex items-center gap-2 text-white/60 hover:text-white font-medium transition-colors flex-shrink-0">
+            Get notified
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center text-white/40 italic mt-8">More tools are brewing.</p>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="relative py-24 px-6 section-alt">
+  <div class="max-w-2xl mx-auto relative z-10">
+    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-8">Behind the kettle</h2>
+
+    <div class="space-y-6 text-lg text-white/70 leading-relaxed">
+      <p>Still Kettle is a small, independent studio.</p>
+      <p>
+        We're builders who got tired of waiting for the right tools to exist — so we started making them. We harness the power of AI to create tools that genuinely help people work smarter.
+      </p>
+      <p>
+        If you're someone who notices friction others ignore, who sketches solutions on napkins, who builds before asking permission — we'd like to hear from you.
+      </p>
+    </div>
+
+    <div class="mt-10">
+      <a href="mailto:hello@stillkettle.com" class="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-sk-deep bg-white rounded-full hover:bg-sk-foam transition-all">
+        Say hello
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="relative py-12 px-6 border-t border-white/10 bg-sk-deep/50 backdrop-blur-sm">
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8">
+      <div>
+        <a href="mailto:hello@stillkettle.com" class="text-white hover:text-sk-light transition-colors">hello@stillkettle.com</a>
+        <div class="flex gap-6 mt-3 text-sm">
+          <a href="privacy.html" class="text-white/50 hover:text-white transition-colors">Privacy</a>
+          <a href="terms.html" class="text-white/50 hover:text-white transition-colors">Terms</a>
+        </div>
+      </div>
+      <div class="text-right">
+        <p class="text-sm text-white/40">© 2026 Still Kettle</p>
+        <p class="text-sm text-white/40 italic mt-1">Built with care. Somewhere quiet.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Contact Modal -->
+<div id="contactModal" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeContactModal()"></div>
+  <div class="absolute inset-0 flex items-center justify-center p-4">
+    <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8">
+      <button onclick="closeContactModal()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-all">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <h3 class="font-display text-2xl font-bold text-gray-900 mb-2">Let's talk</h3>
+      <p class="text-gray-500 mb-6">Have an idea for a tool that should exist? We'd love to hear it.</p>
+      <form id="contactForm" class="space-y-4">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Your email</label>
+          <input type="email" id="email" name="email" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-sk-blue focus:ring-0 outline-none transition-all" placeholder="you@example.com">
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your idea</label>
+          <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-sk-blue focus:ring-0 outline-none transition-all resize-none" placeholder="Tell us about the tool you wish existed..."></textarea>
+        </div>
+        <button type="submit" class="w-full px-4 py-3 bg-sk-deep text-white font-medium rounded-full hover:bg-sk-navy transition-colors">
+          Send message
+        </button>
+      </form>
+      <p class="text-xs text-gray-400 mt-4 text-center">Or email us directly at <a href="mailto:hello@stillkettle.com" class="text-sk-blue hover:underline">hello@stillkettle.com</a></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openContactModal() {
+    document.getElementById('contactModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeContactModal() {
+    document.getElementById('contactModal').classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    const mailtoLink = 'mailto:hello@stillkettle.com?subject=Tool Idea from ' + encodeURIComponent(email) + '&body=' + encodeURIComponent(message + '\n\nFrom: ' + email);
+    window.location.href = mailtoLink;
+    closeContactModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeContactModal();
+  });
+</script>
+
+</body>
+</html>
