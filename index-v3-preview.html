@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Still Kettle — Software Tools</title>
+  <meta name="description" content="We build the tools we always needed — now possible — without noise.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='8'/><text x='50' y='65' font-size='40' text-anchor='middle' fill='%23faf9f7' font-family='Georgia' font-style='italic'>sk</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       Design System v3 — Quiet Editorial + Visual Depth
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+    :root {
+      /* Colors - Warmer, more presence */
+      --color-ink: #1a1a1a;
+      --color-ink-light: #3d3d3d;
+      --color-ink-muted: #6b6b6b;
+
+      --color-bg: #e8e4df;           /* Warm taupe background */
+      --color-bg-light: #f2efeb;     /* Lighter sections */
+      --color-paper: #faf9f7;        /* Cards, elevated surfaces */
+      --color-paper-shadow: #d9d4cd; /* Borders, lines */
+
+      --color-accent: #8b7355;       /* Warm brown accent */
+      --color-accent-muted: #a69580; /* Softer accent */
+      --color-sage: #7a8b7a;         /* Muted sage green */
+
+      /* Typography */
+      --font-display: 'Newsreader', 'Georgia', serif;
+      --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+
+      /* Spacing */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-24: 6rem;
+      --space-32: 8rem;
+
+      /* Animation */
+      --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    /* ━━━ Reset ━━━ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ━━━ Base ━━━ */
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--color-ink-light);
+      background: var(--color-bg);
+      overflow-x: hidden;
+    }
+
+    /* ━━━ Layout ━━━ */
+    .page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    .container-narrow {
+      max-width: 680px;
+    }
+
+    /* ━━━ Navigation ━━━ */
+    .nav {
+      position: relative;
+      z-index: 100;
+      padding: var(--space-6) 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .wordmark {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 0.01em;
+      color: var(--color-ink);
+      text-decoration: none;
+    }
+
+    .nav-link {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--color-ink-muted);
+      text-decoration: none;
+      transition: color 0.2s var(--ease-default);
+    }
+
+    .nav-link:hover {
+      color: var(--color-ink);
+    }
+
+    /* ━━━ Hero ━━━ */
+    .hero {
+      position: relative;
+      padding: var(--space-16) 0 var(--space-32);
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .headline-hero {
+      font-family: var(--font-display);
+      font-size: clamp(2.75rem, 5.5vw, 4rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--color-ink);
+      margin-bottom: var(--space-6);
+    }
+
+    .headline-hero span {
+      display: block;
+    }
+
+    .text-lead {
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--color-ink-light);
+      max-width: 440px;
+    }
+
+    /* Hero Visual */
+    .hero-visual {
+      position: relative;
+      height: 400px;
+    }
+
+    /* Floating product mockup */
+    .hero-mockup {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-3deg);
+      width: 320px;
+      background: var(--color-paper);
+      border-radius: 12px;
+      padding: var(--space-6);
+      box-shadow:
+        0 4px 6px rgba(0,0,0,0.02),
+        0 12px 24px rgba(0,0,0,0.06),
+        0 24px 48px rgba(0,0,0,0.06);
+    }
+
+    .mockup-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--color-paper-shadow);
+    }
+
+    .mockup-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--color-ink);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mockup-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--color-paper);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .mockup-title {
+      font-weight: 600;
+      font-size: 0.9375rem;
+      color: var(--color-ink);
+    }
+
+    .mockup-subtitle {
+      font-size: 0.8125rem;
+      color: var(--color-ink-muted);
+    }
+
+    .mockup-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .mockup-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-3);
+      background: var(--color-bg-light);
+      border-radius: 6px;
+    }
+
+    .mockup-label {
+      font-size: 0.8125rem;
+      color: var(--color-ink-muted);
+    }
+
+    .mockup-value {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-ink);
+    }
+
+    .mockup-badge {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-sage);
+      background: rgba(122, 139, 122, 0.15);
+      padding: var(--space-1) var(--space-2);
+      border-radius: 4px;
+    }
+
+    /* Secondary floating card */
+    .hero-float-card {
+      position: absolute;
+      bottom: 20px;
+      right: -20px;
+      background: var(--color-ink);
+      color: var(--color-paper);
+      padding: var(--space-4) var(--space-6);
+      border-radius: 10px;
+      transform: rotate(2deg);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    .float-card-number {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 500;
+      margin-bottom: var(--space-1);
+    }
+
+    .float-card-label {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Decorative elements */
+    .deco-line {
+      position: absolute;
+      stroke: var(--color-paper-shadow);
+      stroke-width: 1.5;
+      fill: none;
+      opacity: 0.6;
+    }
+
+    .deco-line-1 {
+      top: 60px;
+      left: -100px;
+      width: 300px;
+      height: 200px;
+    }
+
+    .deco-line-2 {
+      bottom: 40px;
+      right: -50px;
+      width: 250px;
+      height: 150px;
+    }
+
+    .deco-star {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      fill: var(--color-accent-muted);
+      opacity: 0.5;
+    }
+
+    .deco-star-1 { top: 30%; left: 5%; transform: rotate(15deg); }
+    .deco-star-2 { top: 15%; right: 20%; width: 16px; height: 16px; }
+    .deco-star-3 { bottom: 25%; right: 5%; transform: rotate(-10deg); }
+
+    .deco-diamond {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: var(--color-accent);
+      transform: rotate(45deg);
+      opacity: 0.4;
+    }
+
+    .deco-diamond-1 { top: 20%; left: 15%; }
+    .deco-diamond-2 { bottom: 35%; left: 8%; width: 8px; height: 8px; }
+
+    /* ━━━ Philosophy Section ━━━ */
+    .philosophy {
+      position: relative;
+      background: var(--color-bg-light);
+      padding: var(--space-24) 0;
+    }
+
+    .philosophy-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .philosophy p {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: var(--color-ink-light);
+      margin-bottom: var(--space-6);
+    }
+
+    .philosophy p:last-child {
+      margin-bottom: 0;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--color-ink);
+    }
+
+    /* ━━━ Products Section ━━━ */
+    .products {
+      padding: var(--space-24) 0 var(--space-32);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--space-12);
+    }
+
+    .headline-section {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: var(--color-ink);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: var(--space-8);
+      background: var(--color-paper);
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.02),
+        0 8px 16px rgba(0,0,0,0.04);
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 4px 8px rgba(0,0,0,0.04),
+        0 16px 32px rgba(0,0,0,0.08);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--color-ink);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-6);
+    }
+
+    .card-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--color-paper);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .card-title {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-ink);
+      margin-bottom: var(--space-2);
+    }
+
+    .card-description {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--color-ink-light);
+      margin-bottom: var(--space-6);
+      flex-grow: 1;
+    }
+
+    .card-action {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--color-accent);
+    }
+
+    .card-action span {
+      transition: transform 0.2s var(--ease-default);
+    }
+
+    .card:hover .card-action span {
+      transform: translateX(4px);
+    }
+
+    /* Coming soon card */
+    .card-soon {
+      background: transparent;
+      border: 2px dashed var(--color-paper-shadow);
+      box-shadow: none;
+    }
+
+    .card-soon:hover {
+      transform: none;
+      border-color: var(--color-accent-muted);
+      box-shadow: none;
+    }
+
+    .card-soon .card-icon {
+      background: var(--color-paper-shadow);
+    }
+
+    .card-soon .card-icon svg {
+      stroke: var(--color-ink-muted);
+    }
+
+    .card-soon .card-title {
+      color: var(--color-ink-muted);
+    }
+
+    .card-soon .card-action {
+      color: var(--color-ink-muted);
+    }
+
+    .more-brewing {
+      text-align: center;
+      margin-top: var(--space-8);
+      font-size: 0.9375rem;
+      color: var(--color-ink-muted);
+      font-style: italic;
+    }
+
+    /* ━━━ About Section ━━━ */
+    .about {
+      background: var(--color-bg-light);
+      padding: var(--space-24) 0;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+      height: 300px;
+    }
+
+    .about-shape {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+      border: 2px solid var(--color-paper-shadow);
+      border-radius: 50%;
+    }
+
+    .about-shape::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: -20px;
+      bottom: -20px;
+      border: 1px solid var(--color-paper-shadow);
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+
+    .about-shape-inner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      opacity: 0.15;
+    }
+
+    .about-content h2 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: var(--color-ink);
+      margin-bottom: var(--space-6);
+    }
+
+    .about-content p {
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: var(--color-ink-light);
+      margin-bottom: var(--space-4);
+    }
+
+    .about-content p:last-of-type {
+      margin-bottom: var(--space-8);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--color-paper);
+      background: var(--color-ink);
+      padding: var(--space-3) var(--space-6);
+      border-radius: 100px;
+      text-decoration: none;
+      transition: all 0.2s var(--ease-default);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-ink-light);
+    }
+
+    .btn-primary span {
+      transition: transform 0.2s var(--ease-default);
+    }
+
+    .btn-primary:hover span {
+      transform: translateX(4px);
+    }
+
+    /* ━━━ Footer ━━━ */
+    .footer {
+      margin-top: auto;
+      padding: var(--space-12) 0;
+      border-top: 1px solid var(--color-paper-shadow);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .footer-email a {
+      font-size: 0.9375rem;
+      color: var(--color-ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .footer-email a:hover {
+      color: var(--color-ink-light);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: var(--space-4);
+      font-size: 0.875rem;
+    }
+
+    .footer-links a {
+      color: var(--color-ink-muted);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-ink);
+    }
+
+    .footer-right {
+      text-align: right;
+    }
+
+    .footer-copy {
+      font-size: 0.8125rem;
+      color: var(--color-ink-muted);
+      margin-bottom: var(--space-2);
+    }
+
+    .footer-signoff {
+      font-size: 0.8125rem;
+      font-style: italic;
+      color: var(--color-accent-muted);
+    }
+
+    /* ━━━ Animations ━━━ */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatUp {
+      from { opacity: 0; transform: translate(-50%, -40%) rotate(-3deg); }
+      to { opacity: 1; transform: translate(-50%, -50%) rotate(-3deg); }
+    }
+
+    @keyframes floatCard {
+      from { opacity: 0; transform: rotate(2deg) translateY(20px); }
+      to { opacity: 1; transform: rotate(2deg) translateY(0); }
+    }
+
+    .animate-fade {
+      opacity: 0;
+      animation: fadeIn 0.7s var(--ease-out) forwards;
+    }
+
+    .hero-mockup {
+      opacity: 0;
+      animation: floatUp 0.8s var(--ease-out) 0.2s forwards;
+    }
+
+    .hero-float-card {
+      opacity: 0;
+      animation: floatCard 0.6s var(--ease-out) 0.5s forwards;
+    }
+
+    .delay-1 { animation-delay: 0ms; }
+    .delay-2 { animation-delay: 100ms; }
+    .delay-3 { animation-delay: 200ms; }
+
+    /* ━━━ Focus States ━━━ */
+    :focus-visible {
+      outline: 2px solid var(--color-ink);
+      outline-offset: 4px;
+    }
+
+    /* ━━━ Reduced Motion ━━━ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .animate-fade, .hero-mockup, .hero-float-card {
+        opacity: 1;
+        transform: none;
+      }
+      .hero-mockup {
+        transform: translate(-50%, -50%) rotate(-3deg);
+      }
+    }
+
+    /* ━━━ Responsive ━━━ */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-content {
+        order: 2;
+      }
+
+      .text-lead {
+        margin: 0 auto;
+      }
+
+      .hero-visual {
+        order: 1;
+        height: 320px;
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .about-visual {
+        display: none;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: var(--space-8) 0 var(--space-16);
+      }
+
+      .hero-visual {
+        height: 280px;
+      }
+
+      .hero-mockup {
+        width: 280px;
+        padding: var(--space-4);
+      }
+
+      .hero-float-card {
+        display: none;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: var(--space-6);
+      }
+
+      .footer-right {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="container">
+        <div class="nav-inner">
+          <a href="/" class="wordmark">stillkettle</a>
+          <a href="mailto:hello@stillkettle.com" class="nav-link">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <h1 class="headline-hero animate-fade delay-1">
+              <span>Good things</span>
+              <span>take time to brew</span>
+            </h1>
+            <p class="text-lead animate-fade delay-2">We build the tools we always needed — now possible — without noise.</p>
+          </div>
+
+          <div class="hero-visual">
+            <!-- Decorative elements -->
+            <svg class="deco-line deco-line-1" viewBox="0 0 300 200">
+              <path d="M0,100 Q75,20 150,100 T300,100" />
+            </svg>
+            <svg class="deco-line deco-line-2" viewBox="0 0 250 150">
+              <path d="M0,75 Q60,0 125,75 T250,75" />
+            </svg>
+
+            <svg class="deco-star deco-star-1" viewBox="0 0 24 24">
+              <polygon points="12,2 15,9 22,9 16,14 18,22 12,17 6,22 8,14 2,9 9,9" />
+            </svg>
+            <svg class="deco-star deco-star-2" viewBox="0 0 24 24">
+              <polygon points="12,2 15,9 22,9 16,14 18,22 12,17 6,22 8,14 2,9 9,9" />
+            </svg>
+            <svg class="deco-star deco-star-3" viewBox="0 0 24 24">
+              <polygon points="12,2 15,9 22,9 16,14 18,22 12,17 6,22 8,14 2,9 9,9" />
+            </svg>
+
+            <div class="deco-diamond deco-diamond-1"></div>
+            <div class="deco-diamond deco-diamond-2"></div>
+
+            <!-- Product mockup -->
+            <div class="hero-mockup">
+              <div class="mockup-header">
+                <div class="mockup-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="mockup-title">Stella</div>
+                  <div class="mockup-subtitle">Invoice Scanner</div>
+                </div>
+              </div>
+              <div class="mockup-content">
+                <div class="mockup-row">
+                  <span class="mockup-label">Invoices found</span>
+                  <span class="mockup-value">24</span>
+                </div>
+                <div class="mockup-row">
+                  <span class="mockup-label">Total extracted</span>
+                  <span class="mockup-value">$12,450</span>
+                </div>
+                <div class="mockup-row">
+                  <span class="mockup-label">Status</span>
+                  <span class="mockup-badge">Synced</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating stat card -->
+            <div class="hero-float-card">
+              <div class="float-card-number">3 min</div>
+              <div class="float-card-label">Avg. time saved</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Philosophy -->
+    <section class="philosophy">
+      <div class="container">
+        <div class="philosophy-inner">
+          <p>AI has changed what's possible. Tools that once required teams can now be built by one person with a clear vision.</p>
+          <p>We're not chasing trends or building for investors. We make software for ourselves first — then share it with others who feel the same friction.</p>
+          <p>Simple tools. Thoughtfully made. No noise.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="headline-section">What we're making</h2>
+        </div>
+
+        <div class="cards-grid">
+          <!-- Stella -->
+          <a href="https://stella.stillkettle.com" class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Stella</h3>
+            <p class="card-description">Scans your Gmail for invoices and extracts the data — so you don't have to. For freelancers and small teams.</p>
+            <span class="card-action">Try Stella <span>→</span></span>
+          </a>
+
+          <!-- Coming Soon -->
+          <div class="card card-soon">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Something new</h3>
+            <p class="card-description">Another tool is brewing. Sign up to be the first to know when it's ready.</p>
+            <a href="mailto:hello@stillkettle.com?subject=Notify me" class="card-action">Get notified <span>→</span></a>
+          </div>
+        </div>
+
+        <p class="more-brewing">More tools are brewing.</p>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+      <div class="container">
+        <div class="about-inner">
+          <div class="about-visual">
+            <div class="about-shape">
+              <div class="about-shape-inner"></div>
+            </div>
+          </div>
+          <div class="about-content">
+            <h2>Behind the kettle</h2>
+            <p>Still Kettle is a small, independent studio.</p>
+            <p>We're builders who got tired of waiting for the right tools to exist — so we started making them. AI made it possible. Stubbornness made it happen.</p>
+            <p>If you're someone who notices friction others ignore, who sketches solutions on napkins, who builds before asking permission — we'd like to hear from you.</p>
+            <a href="mailto:hello@stillkettle.com" class="btn-primary">Say hello <span>→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-left">
+            <p class="footer-email"><a href="mailto:hello@stillkettle.com">hello@stillkettle.com</a></p>
+            <div class="footer-links">
+              <a href="privacy.html">Privacy</a>
+              <a href="terms.html">Terms</a>
+            </div>
+          </div>
+          <div class="footer-right">
+            <p class="footer-copy">© 2026 Still Kettle</p>
+            <p class="footer-signoff">Built with care. Somewhere quiet.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
