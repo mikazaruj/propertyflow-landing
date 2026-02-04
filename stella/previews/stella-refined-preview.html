@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stella - Refined Design Preview</title>
+
+  <!-- Google Fonts - Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="stella-refined.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">Stella</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+    </div>
+
+    <a href="#" class="btn btn-filled">Install Free</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+      </svg>
+      Free Chrome Extension
+    </div>
+
+    <h1 class="hero-title">
+      Extract invoices from Gmail to Google Sheets
+      <span class="hero-title-accent">automatically</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Stop manually copying invoice data. Stella AI scans your emails and exports billing details in seconds.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#" class="btn btn-filled btn-lg">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-5.344 9.257c.206.01.413.016.621.016 6.627 0 12-5.373 12-12 0-1.54-.29-3.011-.818-4.364zM12 16.364a4.364 4.364 0 1 1 0-8.728 4.364 4.364 0 0 1 0 8.728Z"/>
+        </svg>
+        Install Free Extension
+      </a>
+      <a href="#how-it-works" class="btn btn-outlined btn-lg">
+        See how it works
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="hero-image">
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--color-on-surface-muted);">
+        <svg width="64" height="64" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="opacity: 0.4; margin-bottom: 16px;">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+        </svg>
+        <p style="opacity: 0.6;">Extension screenshot will go here</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section id="how-it-works" class="section section-alt">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>How it works</h2>
+      <p>Three simple steps to automate your invoice tracking</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#ea4335">
+            <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+          </svg>
+        </div>
+        <div class="step-label">Step 1</div>
+        <h3 class="step-title">Connect Gmail</h3>
+        <p class="step-desc">One-click OAuth connection to your inbox. We only read invoice emails, nothing else.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-icon">
+          <svg width="28" height="28" fill="none" stroke="#3b82f6" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="step-label">Step 2</div>
+        <h3 class="step-title">Scan Invoices</h3>
+        <p class="step-desc">Stella AI identifies invoice emails and extracts key fields like amount, date, and vendor.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#22c55e">
+            <path d="M19.5 3H4.5C3.12 3 2 4.12 2 5.5v13C2 19.88 3.12 21 4.5 21h15c1.38 0 2.5-1.12 2.5-2.5v-13C22 4.12 20.88 3 19.5 3zm-1 14h-13c-.55 0-1-.45-1-1v-9c0-.55.45-1 1-1h13c.55 0 1 .45 1 1v9c0 .55-.45 1-1 1z"/>
+            <path d="M7 11h2v5H7zm4-3h2v8h-2zm4 2h2v6h-2z"/>
+          </svg>
+        </div>
+        <div class="step-label">Step 3</div>
+        <h3 class="step-title">Export to Sheets</h3>
+        <p class="step-desc">Data automatically added to your Google Sheet. Track all your bills in one place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section id="features" class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>Everything you need</h2>
+      <p>Powerful features to automate your invoice workflow</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon blue">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">AI-Powered Extraction</h3>
+        <p class="feature-desc">Automatically identifies invoice emails and extracts key fields like vendor, amount, and due date.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon green">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.5 3H4.5C3.12 3 2 4.12 2 5.5v13C2 19.88 3.12 21 4.5 21h15c1.38 0 2.5-1.12 2.5-2.5v-13C22 4.12 20.88 3 19.5 3zm-1 14h-13c-.55 0-1-.45-1-1v-9c0-.55.45-1 1-1h13c.55 0 1 .45 1 1v9c0 .55-.45 1-1 1z"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Google Sheets Export</h3>
+        <p class="feature-desc">One-click export to your spreadsheet. Data organized automatically in neat columns.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon purple">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Pattern Learning</h3>
+        <p class="feature-desc">Gets smarter with each vendor over time. The more you use it, the better it gets.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon amber">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">
+          PDF Processing
+          <span class="badge badge-primary">Pro</span>
+        </h3>
+        <p class="feature-desc">Extract data from PDF invoice attachments. Works with most invoice formats.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon indigo">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">
+          Scheduled Scans
+          <span class="badge badge-primary">Pro</span>
+        </h3>
+        <p class="feature-desc">Daily, weekly, or monthly automatic scans. Set it and forget it.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon gray">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Privacy First</h3>
+        <p class="feature-desc">Your data stays in your Google account. We never store your emails or invoice data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing" class="section section-alt">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>Simple, transparent pricing</h2>
+      <p>Start free, upgrade when you need more power</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-header">
+          <h3>Free</h3>
+          <div class="pricing-price">
+            <span class="pricing-amount">€0</span>
+            <span class="pricing-period">/month</span>
+          </div>
+        </div>
+
+        <ul class="pricing-features">
+          <li>
+            <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            100 emails per month
+          </li>
+          <li>
+            <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            3 trusted vendors
+          </li>
+          <li>
+            <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            6 basic extraction fields
+          </li>
+          <li>
+            <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Google Sheets export
+          </li>
+          <li class="disabled">
+            <svg class="cross-icon" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+            </svg>
+            No PDF processing
+          </li>
+          <li class="disabled">
+            <svg class="cross-icon" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+            </svg>
+            No scheduled scans
+          </li>
+        </ul>
+
+        <a href="#" class="btn btn-outlined" style="width: 100%;">Install Free</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <span class="pricing-popular">Most Popular</span>
+        <div class="pricing-header">
+          <h3>Pro</h3>
+          <div class="pricing-price">
+            <span class="pricing-amount">€12</span>
+            <span class="pricing-period">/month</span>
+          </div>
+        </div>
+
+        <ul class="pricing-features">
+          <li>
+            <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <strong>Unlimited</strong> emails per month
+          </li>
+          <li>
+            <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            10 trusted vendors
+          </li>
+          <li>
+            <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <strong>All 16</strong> extraction fields
+          </li>
+          <li>
+            <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Google Sheets export
+          </li>
+          <li>
+            <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <strong>100 PDFs</strong> per month
+          </li>
+          <li>
+            <svg class="check-icon" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            Scheduled scans
+          </li>
+        </ul>
+
+        <a href="#" class="btn btn-filled" style="width: 100%;">Start Pro</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>Frequently asked questions</h2>
+      <p>Everything you need to know about Stella</p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-trigger" onclick="this.parentElement.classList.toggle('open')">
+          Is my data secure?
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="faq-content">
+          <p>Yes. Stella runs entirely in your browser as a Chrome extension. Invoice data goes directly from Gmail to your Google Sheet using your own Google account credentials. We never store your emails or invoice data on our servers.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger" onclick="this.parentElement.classList.toggle('open')">
+          Which email providers are supported?
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="faq-content">
+          <p>Currently Gmail only. We use Google's official API with OAuth for secure access. This ensures we only have permission to read your emails, and you can revoke access at any time.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger" onclick="this.parentElement.classList.toggle('open')">
+          What invoice formats are supported?
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="faq-content">
+          <p>Stella works with most invoice emails—plain text, HTML formatted, and PDF attachments (Pro plan). Our AI learns vendor patterns over time.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger" onclick="this.parentElement.classList.toggle('open')">
+          Can I cancel anytime?
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="faq-content">
+          <p>Yes. Pro subscriptions can be canceled anytime with just a few clicks. You'll keep your Pro features until the end of your current billing period.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="color: white;">
+          <div class="nav-logo-icon" style="background: white;">
+            <svg width="20" height="20" fill="none" stroke="#1a1a1a" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <span class="nav-logo-text">Stella</span>
+        </a>
+        <p>Automatically extract invoices from Gmail to Google Sheets.</p>
+        <p style="margin-top: 8px; font-size: 12px; opacity: 0.7;">A Still Kettle product</p>
+      </div>
+
+      <div>
+        <h4>Product</h4>
+        <ul class="footer-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Legal</h4>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Connect</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:hello@stillkettle.com">hello@stillkettle.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Still Kettle. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
