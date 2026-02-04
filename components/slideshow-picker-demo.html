@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slideshow Picker - Component Demo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="slideshow-picker.css">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      margin: 0;
+      background: #f5f5f5;
+      min-height: 100vh;
+    }
+
+    /* Demo Header */
+    .demo-header {
+      background: #211A1D;
+      color: #fff;
+      padding: 24px 32px;
+    }
+
+    .demo-header h1 {
+      margin: 0 0 8px 0;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .demo-header p {
+      margin: 0;
+      opacity: 0.7;
+      font-size: 14px;
+    }
+
+    /* Demo Content */
+    .demo-content {
+      padding: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .demo-section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .demo-section h2 {
+      margin: 0 0 8px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: #211A1D;
+    }
+
+    .demo-section > p {
+      margin: 0 0 24px 0;
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* Slideshow Container */
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+
+    .slideshow-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: opacity 0.5s ease;
+    }
+
+    .slideshow-bg.bg-desert { background-image: url('../assets/images/test/desert-sunset.jpg'); }
+    .slideshow-bg.bg-mountain { background-image: url('../assets/images/test/mountain-milkyway.jpg'); }
+    .slideshow-bg.bg-workspace { background-image: url('../assets/images/test/workspace.jpg'); }
+
+    .slideshow-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      transition: background 0.3s ease;
+    }
+
+    .slideshow-bg.overlay-light::before { background: rgba(0, 0, 0, 0.2); }
+    .slideshow-bg.overlay-standard::before { background: rgba(0, 0, 0, 0.4); }
+    .slideshow-bg.overlay-heavy::before { background: rgba(0, 0, 0, 0.6); }
+
+    .slideshow-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 32px;
+    }
+
+    .slideshow-content h3 {
+      margin: 0 0 12px 0;
+      font-size: 32px;
+      font-weight: 600;
+    }
+
+    .slideshow-content p {
+      margin: 0;
+      font-size: 16px;
+      opacity: 0.85;
+      max-width: 480px;
+    }
+
+    /* Picker Container (embedded) */
+    .picker-container-embedded {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      padding-bottom: 16px;
+    }
+
+    .picker-container-embedded .slideshow-picker {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      transform: none;
+    }
+
+    .picker-container-embedded .slideshow-picker__info {
+      display: none;
+    }
+
+    /* Code Block */
+    .code-block {
+      background: #1a1a1a;
+      border-radius: 8px;
+      padding: 20px;
+      overflow-x: auto;
+      margin-top: 24px;
+    }
+
+    .code-block code {
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 13px;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    .code-block .comment { color: #6a9955; }
+    .code-block .keyword { color: #569cd6; }
+    .code-block .string { color: #ce9178; }
+    .code-block .property { color: #9cdcfe; }
+  </style>
+</head>
+<body>
+
+<div class="demo-header">
+  <h1>Slideshow Picker Component</h1>
+  <p>Reusable picker UI for product slideshows, image testing, and background switching</p>
+</div>
+
+<div class="demo-content">
+
+  <!-- Basic Usage Demo -->
+  <div class="demo-section">
+    <h2>Product Slideshow</h2>
+    <p>Interactive background slideshow with overlay controls. User's preferred images: Desert, Mountain, Workspace (all with light overlay).</p>
+
+    <div class="slideshow-container">
+      <div class="slideshow-bg bg-mountain overlay-light" id="slideshow-target"></div>
+      <div class="slideshow-content">
+        <h3>Your Product Here</h3>
+        <p>This slideshow picker can be used for hero sections, product showcases, or any visual content that benefits from multiple background options.</p>
+      </div>
+      <div class="picker-container-embedded" id="picker-embedded"></div>
+    </div>
+
+    <div class="code-block">
+      <code><pre><span class="comment">// Initialize the slideshow picker</span>
+<span class="keyword">const</span> picker = <span class="keyword">new</span> SlideshowPicker({
+  <span class="property">container</span>: <span class="string">'#picker-embedded'</span>,
+  <span class="property">target</span>: <span class="string">'#slideshow-target'</span>,
+  <span class="property">slides</span>: [
+    { <span class="property">id</span>: <span class="string">'desert'</span>, <span class="property">label</span>: <span class="string">'Desert'</span>, <span class="property">image</span>: <span class="string">'desert-sunset.jpg'</span> },
+    { <span class="property">id</span>: <span class="string">'mountain'</span>, <span class="property">label</span>: <span class="string">'Mountain'</span>, <span class="property">image</span>: <span class="string">'mountain-milkyway.jpg'</span>, <span class="property">active</span>: <span class="keyword">true</span> },
+    { <span class="property">id</span>: <span class="string">'workspace'</span>, <span class="property">label</span>: <span class="string">'Workspace'</span>, <span class="property">image</span>: <span class="string">'workspace.jpg'</span> },
+  ],
+  <span class="property">controls</span>: [
+    { <span class="property">id</span>: <span class="string">'light'</span>, <span class="property">label</span>: <span class="string">'Light'</span>, <span class="property">active</span>: <span class="keyword">true</span> },
+    { <span class="property">id</span>: <span class="string">'standard'</span>, <span class="property">label</span>: <span class="string">'Standard'</span> },
+    { <span class="property">id</span>: <span class="string">'heavy'</span>, <span class="property">label</span>: <span class="string">'Heavy'</span> },
+  ],
+  <span class="property">showInfo</span>: <span class="keyword">false</span>
+});</pre></code>
+    </div>
+  </div>
+
+  <!-- Files List -->
+  <div class="demo-section">
+    <h2>Component Files</h2>
+    <p>Include these files to use the slideshow picker:</p>
+
+    <ul style="margin: 0; padding-left: 20px; color: #444; line-height: 2;">
+      <li><strong>slideshow-picker.css</strong> - Styles for picker UI (dark/light themes, sizes, positions)</li>
+      <li><strong>slideshow-picker.js</strong> - JavaScript class for picker functionality</li>
+    </ul>
+  </div>
+
+  <!-- Options Reference -->
+  <div class="demo-section">
+    <h2>Options</h2>
+    <p>Available configuration options:</p>
+
+    <table style="width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 2px solid #eee; text-align: left;">
+          <th style="padding: 12px 16px 12px 0; color: #211A1D;">Option</th>
+          <th style="padding: 12px 16px 12px 0; color: #211A1D;">Type</th>
+          <th style="padding: 12px 16px 12px 0; color: #211A1D;">Default</th>
+          <th style="padding: 12px 0; color: #211A1D;">Description</th>
+        </tr>
+      </thead>
+      <tbody style="color: #555;">
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 16px 12px 0;"><code>container</code></td>
+          <td style="padding: 12px 16px 12px 0;">string/element</td>
+          <td style="padding: 12px 16px 12px 0;">null</td>
+          <td style="padding: 12px 0;">Selector or element for picker container</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 16px 12px 0;"><code>target</code></td>
+          <td style="padding: 12px 16px 12px 0;">string/element</td>
+          <td style="padding: 12px 16px 12px 0;">null</td>
+          <td style="padding: 12px 0;">Element to apply background classes to</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 16px 12px 0;"><code>slides</code></td>
+          <td style="padding: 12px 16px 12px 0;">array</td>
+          <td style="padding: 12px 16px 12px 0;">[]</td>
+          <td style="padding: 12px 0;">Array of {id, label, image, active}</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 16px 12px 0;"><code>controls</code></td>
+          <td style="padding: 12px 16px 12px 0;">array</td>
+          <td style="padding: 12px 16px 12px 0;">[]</td>
+          <td style="padding: 12px 0;">Array of {id, label, active}</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 16px 12px 0;"><code>theme</code></td>
+          <td style="padding: 12px 16px 12px 0;">string</td>
+          <td style="padding: 12px 16px 12px 0;">'dark'</td>
+          <td style="padding: 12px 0;">'dark' or 'light'</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 16px 12px 0;"><code>size</code></td>
+          <td style="padding: 12px 16px 12px 0;">string</td>
+          <td style="padding: 12px 16px 12px 0;">'default'</td>
+          <td style="padding: 12px 0;">'small', 'default', or 'large'</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 16px 12px 0;"><code>autoplay</code></td>
+          <td style="padding: 12px 16px 12px 0;">boolean</td>
+          <td style="padding: 12px 16px 12px 0;">false</td>
+          <td style="padding: 12px 0;">Enable auto-advance</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px 16px 12px 0;"><code>autoplayInterval</code></td>
+          <td style="padding: 12px 16px 12px 0;">number</td>
+          <td style="padding: 12px 16px 12px 0;">5000</td>
+          <td style="padding: 12px 0;">Ms between slides</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<script src="slideshow-picker.js"></script>
+<script>
+  // Initialize the embedded picker
+  const picker = new SlideshowPicker({
+    container: '#picker-embedded',
+    target: '#slideshow-target',
+    slides: [
+      { id: 'desert', label: 'Desert', image: '../assets/images/test/desert-sunset.jpg' },
+      { id: 'mountain', label: 'Mountain', image: '../assets/images/test/mountain-milkyway.jpg', active: true },
+      { id: 'workspace', label: 'Workspace', image: '../assets/images/test/workspace.jpg' },
+    ],
+    controls: [
+      { id: 'light', label: 'Light', active: true },
+      { id: 'standard', label: 'Standard' },
+      { id: 'heavy', label: 'Heavy' },
+    ],
+    showInfo: false
+  });
+</script>
+
+</body>
+</html>

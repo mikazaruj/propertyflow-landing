@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Still Kettle - Background Image Picker</title>
+  <meta name="description" content="We build AI-powered tools that automate tedious tasks.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23211A1D' width='100' height='100' rx='28'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='white'>SK</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- M3 Design Tokens -->
+  <link rel="stylesheet" href="styles/m3-tokens.css?v=2">
+
+  <style>
+    /* ===================
+       BASE STYLES
+       =================== */
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--md-sys-typescale-body-font);
+      font-size: var(--md-sys-typescale-body-large-size);
+      line-height: var(--md-sys-typescale-body-large-line-height);
+      letter-spacing: var(--md-sys-typescale-body-large-tracking);
+      background-color: var(--md-sys-color-surface);
+      color: var(--md-sys-color-on-surface);
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===================
+       PAGE BACKGROUND - Modified for picker
+       =================== */
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      background-size: cover;
+      background-position: center center;
+      z-index: -2;
+      transition: opacity 0.5s ease;
+    }
+
+    .page-bg.bg-original {
+      background-image: url('assets/images/bg-paint-strokes.jpg');
+    }
+
+    .page-bg.bg-desert {
+      background-image: url('assets/images/test/desert-sunset.jpg');
+    }
+
+    .page-bg.bg-mountain {
+      background-image: url('assets/images/test/mountain-milkyway.jpg');
+    }
+
+    .page-bg.bg-workspace {
+      background-image: url('assets/images/test/workspace.jpg');
+    }
+
+    .page-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      transition: background 0.3s ease;
+    }
+
+    /* Overlay variations */
+    .page-bg.overlay-light::before {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .page-bg.overlay-standard::before {
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .page-bg.overlay-heavy::before {
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Main content wrapper */
+    .page-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===================
+       TYPOGRAPHY CLASSES
+       =================== */
+    .display-large {
+      font-family: var(--md-sys-typescale-display-font);
+      font-size: var(--md-sys-typescale-display-large-size);
+      line-height: var(--md-sys-typescale-display-large-line-height);
+      font-weight: var(--md-sys-typescale-display-large-weight);
+      letter-spacing: var(--md-sys-typescale-display-large-tracking);
+    }
+
+    .display-medium {
+      font-family: var(--md-sys-typescale-display-font);
+      font-size: var(--md-sys-typescale-display-medium-size);
+      line-height: var(--md-sys-typescale-display-medium-line-height);
+      font-weight: var(--md-sys-typescale-display-medium-weight);
+      letter-spacing: var(--md-sys-typescale-display-medium-tracking);
+    }
+
+    .headline-large {
+      font-family: var(--md-sys-typescale-headline-font);
+      font-size: var(--md-sys-typescale-headline-large-size);
+      line-height: var(--md-sys-typescale-headline-large-line-height);
+      font-weight: var(--md-sys-typescale-headline-large-weight);
+    }
+
+    .title-large {
+      font-family: var(--md-sys-typescale-title-font);
+      font-size: var(--md-sys-typescale-title-large-size);
+      line-height: var(--md-sys-typescale-title-large-line-height);
+      font-weight: var(--md-sys-typescale-title-large-weight);
+    }
+
+    .title-medium {
+      font-family: var(--md-sys-typescale-title-font);
+      font-size: var(--md-sys-typescale-title-medium-size);
+      line-height: var(--md-sys-typescale-title-medium-line-height);
+      font-weight: var(--md-sys-typescale-title-medium-weight);
+      letter-spacing: var(--md-sys-typescale-title-medium-tracking);
+    }
+
+    .title-small {
+      font-family: var(--md-sys-typescale-title-font);
+      font-size: var(--md-sys-typescale-title-small-size);
+      line-height: var(--md-sys-typescale-title-small-line-height);
+      font-weight: var(--md-sys-typescale-title-small-weight);
+      letter-spacing: var(--md-sys-typescale-title-small-tracking);
+    }
+
+    .body-large {
+      font-family: var(--md-sys-typescale-body-font);
+      font-size: var(--md-sys-typescale-body-large-size);
+      line-height: var(--md-sys-typescale-body-large-line-height);
+      letter-spacing: var(--md-sys-typescale-body-large-tracking);
+    }
+
+    .body-medium {
+      font-family: var(--md-sys-typescale-body-font);
+      font-size: var(--md-sys-typescale-body-medium-size);
+      line-height: var(--md-sys-typescale-body-medium-line-height);
+      letter-spacing: var(--md-sys-typescale-body-medium-tracking);
+    }
+
+    .body-small {
+      font-family: var(--md-sys-typescale-body-font);
+      font-size: var(--md-sys-typescale-body-small-size);
+      line-height: var(--md-sys-typescale-body-small-line-height);
+      letter-spacing: var(--md-sys-typescale-body-small-tracking);
+    }
+
+    .label-large {
+      font-family: var(--md-sys-typescale-label-font);
+      font-size: var(--md-sys-typescale-label-large-size);
+      line-height: var(--md-sys-typescale-label-large-line-height);
+      font-weight: var(--md-sys-typescale-label-large-weight);
+      letter-spacing: var(--md-sys-typescale-label-large-tracking);
+    }
+
+    .label-medium {
+      font-family: var(--md-sys-typescale-label-font);
+      font-size: var(--md-sys-typescale-label-medium-size);
+      line-height: var(--md-sys-typescale-label-medium-line-height);
+      font-weight: var(--md-sys-typescale-label-medium-weight);
+      letter-spacing: var(--md-sys-typescale-label-medium-tracking);
+    }
+
+    /* ===================
+       GLASSMORPHISM STYLES
+       =================== */
+    .glass {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: var(--md-sys-shape-corner-large);
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      transition: all var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard);
+    }
+
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.65);
+      transform: translateY(-4px);
+      box-shadow:
+        0 16px 48px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    .glass-chip {
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(12px) saturate(150%);
+      -webkit-backdrop-filter: blur(12px) saturate(150%);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    /* ===================
+       SECTION BACKGROUNDS
+       =================== */
+    .section-gradient-subtle {
+      background: rgba(250, 249, 247, 0.75);
+      backdrop-filter: blur(12px) saturate(120%);
+      -webkit-backdrop-filter: blur(12px) saturate(120%);
+    }
+
+    .section-gradient-products {
+      background: rgba(239, 236, 234, 0.78);
+      backdrop-filter: blur(10px) saturate(120%);
+      -webkit-backdrop-filter: blur(10px) saturate(120%);
+    }
+
+    .section-gradient-features {
+      background: rgba(245, 243, 240, 0.72);
+      backdrop-filter: blur(12px) saturate(120%);
+      -webkit-backdrop-filter: blur(12px) saturate(120%);
+    }
+
+    .section-gradient-about {
+      background: rgba(239, 236, 234, 0.78);
+      backdrop-filter: blur(10px) saturate(120%);
+      -webkit-backdrop-filter: blur(10px) saturate(120%);
+    }
+
+    /* ===================
+       M3 BUTTON COMPONENTS
+       =================== */
+    .md-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--md-sys-spacing-sm);
+      height: 40px;
+      padding: 0 var(--md-sys-spacing-button-padding-horizontal);
+      border: none;
+      border-radius: var(--md-sys-shape-corner-full);
+      font-family: var(--md-sys-typescale-label-font);
+      font-size: var(--md-sys-typescale-label-large-size);
+      font-weight: var(--md-sys-typescale-label-large-weight);
+      letter-spacing: var(--md-sys-typescale-label-large-tracking);
+      text-decoration: none;
+      cursor: pointer;
+      transition: all var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+    }
+
+    .md-button--filled {
+      background-color: var(--md-sys-color-primary);
+      color: var(--md-sys-color-on-primary);
+    }
+    .md-button--filled:hover {
+      box-shadow: var(--md-sys-elevation-level1);
+      filter: brightness(1.15);
+    }
+
+    .md-button--glass {
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(12px) saturate(150%);
+      -webkit-backdrop-filter: blur(12px) saturate(150%);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      color: var(--md-sys-color-on-surface);
+      box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    .md-button--glass:hover {
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      transform: translateY(-1px);
+    }
+
+    /* ===================
+       M3 CHIP
+       =================== */
+    .md-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--md-sys-spacing-sm);
+      height: 32px;
+      padding: 0 var(--md-sys-spacing-lg);
+      border-radius: var(--md-sys-shape-corner-small);
+      font-family: var(--md-sys-typescale-label-font);
+      font-size: var(--md-sys-typescale-label-large-size);
+      font-weight: var(--md-sys-typescale-label-large-weight);
+    }
+
+    /* ===================
+       M3 BADGE
+       =================== */
+    .md-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      border-radius: var(--md-sys-shape-corner-full);
+      font-family: var(--md-sys-typescale-label-font);
+      font-size: var(--md-sys-typescale-label-medium-size);
+      font-weight: var(--md-sys-typescale-label-medium-weight);
+      letter-spacing: var(--md-sys-typescale-label-medium-tracking);
+    }
+
+    .md-badge--live {
+      background: #22c55e;
+      color: white;
+    }
+
+    .md-badge--soon {
+      background: rgba(0, 0, 0, 0.08);
+      color: var(--md-sys-color-on-surface-variant);
+    }
+
+    /* ===================
+       LAYOUT
+       =================== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--md-sys-spacing-xl);
+    }
+
+    .section {
+      padding: var(--md-sys-spacing-6xl) 0;
+    }
+
+    /* ===================
+       HERO SECTION
+       =================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 64px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.45);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===================
+       GLASS NAV
+       =================== */
+    .nav-glass {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+    }
+
+    /* ===================
+       ANIMATIONS
+       =================== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate {
+      animation: fadeUp var(--md-sys-motion-duration-medium4) var(--md-sys-motion-easing-emphasized-decelerate) forwards;
+    }
+    .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+    .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+    .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
+    .animate-delay-4 { animation-delay: 0.4s; opacity: 0; }
+
+    /* ===================
+       IMAGE PICKER PANEL
+       =================== */
+    .picker-panel {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: rgba(33, 26, 29, 0.92);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 16px 24px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+    }
+
+    .picker-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .picker-options {
+      display: flex;
+      gap: 10px;
+    }
+
+    .picker-option {
+      position: relative;
+      width: 72px;
+      height: 48px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+      opacity: 0.65;
+    }
+
+    .picker-option:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+
+    .picker-option.active {
+      border-color: #fff;
+      opacity: 1;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+    }
+
+    .picker-option img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .picker-option-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 3px;
+      font-size: 8px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      color: #fff;
+      text-align: center;
+    }
+
+    .overlay-controls {
+      display: flex;
+      gap: 6px;
+      margin-left: 8px;
+      padding-left: 16px;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .overlay-btn {
+      padding: 6px 10px;
+      font-size: 10px;
+      font-weight: 500;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: transparent;
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .overlay-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .overlay-btn.active {
+      background: #fff;
+      color: #211A1D;
+      border-color: #fff;
+    }
+
+    .picker-info {
+      position: fixed;
+      top: 80px;
+      right: 24px;
+      z-index: 1000;
+      background: rgba(33, 26, 29, 0.92);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 16px 20px;
+      max-width: 260px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .picker-info h4 {
+      font-size: 12px;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+      color: #fff;
+    }
+
+    .picker-info p {
+      font-size: 11px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.6);
+      margin: 0;
+    }
+
+    .picker-info .current-selection {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .picker-info .current-selection strong {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Info Panel -->
+<div class="picker-info">
+  <h4>Background Image Picker</h4>
+  <p>Test different hero backgrounds. Adjust overlay for text readability with glassmorphism.</p>
+  <div class="current-selection">
+    Current: <strong id="current-name">Original (Paint Strokes)</strong>
+  </div>
+</div>
+
+<!-- Fixed Page Background -->
+<div class="page-bg bg-original overlay-standard" id="page-bg"></div>
+
+<!-- Main Content -->
+<div class="page-content">
+
+<!-- Glass Navigation -->
+<nav class="nav-glass glass-nav">
+  <div class="container" style="display: flex; align-items: center; justify-content: space-between; height: 64px;">
+    <a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+      <div style="width: 40px; height: 40px; background: var(--md-sys-color-primary); border-radius: var(--md-sys-shape-corner-medium); display: flex; align-items: center; justify-content: center;">
+        <span style="color: var(--md-sys-color-on-primary); font-weight: 500;">SK</span>
+      </div>
+      <span class="title-medium" style="color: var(--md-sys-color-on-surface);">Still Kettle</span>
+    </a>
+
+    <div style="display: flex; align-items: center; gap: var(--md-sys-spacing-sm);">
+      <a href="#products" style="padding: 8px 16px; border-radius: var(--md-sys-shape-corner-full); text-decoration: none; color: var(--md-sys-color-on-surface-variant);">Products</a>
+      <a href="#about" style="padding: 8px 16px; border-radius: var(--md-sys-shape-corner-full); text-decoration: none; color: var(--md-sys-color-on-surface-variant);">About</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container hero-content">
+    <div style="max-width: 720px;">
+      <!-- Glass Chip -->
+      <div class="md-chip glass-chip animate animate-delay-1" style="margin-bottom: var(--md-sys-spacing-xl); color: var(--md-sys-color-on-surface);">
+        <span style="width: 8px; height: 8px; background: #22c55e; border-radius: 50%;"></span>
+        Stella is now live
+      </div>
+
+      <h1 class="display-medium animate animate-delay-2" style="color: var(--md-sys-color-on-surface); margin: 0 0 var(--md-sys-spacing-xl) 0;">
+        Software that works <span style="color: var(--md-sys-color-primary);">smarter</span>
+      </h1>
+
+      <p class="body-large animate animate-delay-3" style="color: var(--md-sys-color-on-surface-variant); margin: 0 0 var(--md-sys-spacing-3xl) 0; max-width: 560px;">
+        We build AI-powered tools that automate tedious tasks and surface what matters. Simple software, thoughtfully made.
+      </p>
+
+      <div class="animate animate-delay-4" style="display: flex; gap: var(--md-sys-spacing-lg); flex-wrap: wrap;">
+        <a href="https://stella.stillkettle.com" class="md-button md-button--filled">
+          Try Stella Free
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="#products" class="md-button md-button--glass">View Products</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products Section -->
+<section id="products" class="section section-gradient-products" style="border-top: 1px solid rgba(0,0,0,0.05);">
+    <div class="container">
+      <div style="margin-bottom: var(--md-sys-spacing-4xl);">
+        <p class="label-large" style="color: var(--md-sys-color-primary); margin: 0 0 var(--md-sys-spacing-sm) 0; text-transform: uppercase;">Products</p>
+        <h2 class="headline-large" style="color: var(--md-sys-color-on-surface); margin: 0 0 var(--md-sys-spacing-lg) 0;">What we're building</h2>
+        <p class="body-large" style="color: var(--md-sys-color-on-surface-variant); margin: 0; max-width: 560px;">
+          Each tool is designed to solve a real problem. AI-powered, privacy-focused, and built for real workflows.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--md-sys-spacing-xl);">
+        <!-- Stella Card -->
+        <a href="https://stella.stillkettle.com" class="glass-card" style="text-decoration: none; color: inherit; padding: var(--md-sys-spacing-xl); display: block;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--md-sys-spacing-xl);">
+            <div style="width: 56px; height: 56px; background: rgba(33, 26, 29, 0.15); backdrop-filter: blur(8px); border-radius: var(--md-sys-shape-corner-medium); display: flex; align-items: center; justify-content: center;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--md-sys-color-primary)" stroke-width="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
+            <span class="md-badge md-badge--live">Live</span>
+          </div>
+          <h3 class="title-large" style="margin: 0 0 var(--md-sys-spacing-sm) 0; color: var(--md-sys-color-on-surface);">Stella</h3>
+          <p class="body-medium" style="margin: 0 0 var(--md-sys-spacing-xl) 0; color: var(--md-sys-color-on-surface-variant);">
+            AI-powered invoice scanner for Gmail. Automatically extracts and organizes your invoice data from emails.
+          </p>
+          <span class="label-large" style="color: var(--md-sys-color-primary); display: flex; align-items: center; gap: 8px;">
+            Try it free
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </a>
+
+        <!-- Coming Soon Card -->
+        <div class="glass-card" style="padding: var(--md-sys-spacing-xl); border: 2px dashed rgba(33, 26, 29, 0.2);">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--md-sys-spacing-xl);">
+            <div style="width: 56px; height: 56px; background: rgba(0, 0, 0, 0.05); backdrop-filter: blur(8px); border-radius: var(--md-sys-shape-corner-medium); display: flex; align-items: center; justify-content: center;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--md-sys-color-on-surface-variant)" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <span class="md-badge md-badge--soon">Soon</span>
+          </div>
+          <h3 class="title-large" style="margin: 0 0 var(--md-sys-spacing-sm) 0; color: var(--md-sys-color-on-surface-variant);">Something new</h3>
+          <p class="body-medium" style="margin: 0 0 var(--md-sys-spacing-xl) 0; color: var(--md-sys-color-outline);">
+            Another AI-powered tool is brewing. Sign up to be notified when it launches.
+          </p>
+          <a href="mailto:hello@stillkettle.com?subject=Notify me" class="label-large" style="color: var(--md-sys-color-primary); display: flex; align-items: center; gap: 8px; text-decoration: none;">
+            Get notified
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Features Section -->
+<section class="section section-gradient-features" style="border-top: 1px solid rgba(0,0,0,0.05);">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: var(--md-sys-spacing-4xl);">
+      <h2 class="headline-large" style="color: var(--md-sys-color-on-surface); margin: 0 0 var(--md-sys-spacing-lg) 0;">Built different</h2>
+      <p class="body-large" style="color: var(--md-sys-color-on-surface-variant); margin: 0 auto; max-width: 480px;">
+        We believe software should do the heavy lifting for you.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--md-sys-spacing-xl);">
+      <div class="glass-card" style="text-align: center; padding: var(--md-sys-spacing-xl);">
+        <div style="width: 64px; height: 64px; margin: 0 auto var(--md-sys-spacing-lg); background: rgba(255,255,255,0.6); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.5); border-radius: var(--md-sys-shape-corner-full); display: flex; align-items: center; justify-content: center;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--md-sys-color-primary)" stroke-width="2">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+        </div>
+        <h3 class="title-medium" style="margin: 0 0 var(--md-sys-spacing-sm) 0; color: var(--md-sys-color-on-surface);">AI-Powered</h3>
+        <p class="body-medium" style="margin: 0; color: var(--md-sys-color-on-surface-variant);">
+          Built with AI at the core to automate what used to take hours.
+        </p>
+      </div>
+
+      <div class="glass-card" style="text-align: center; padding: var(--md-sys-spacing-xl);">
+        <div style="width: 64px; height: 64px; margin: 0 auto var(--md-sys-spacing-lg); background: rgba(255,255,255,0.6); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.5); border-radius: var(--md-sys-shape-corner-full); display: flex; align-items: center; justify-content: center;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--md-sys-color-primary)" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0110 0v4"/>
+          </svg>
+        </div>
+        <h3 class="title-medium" style="margin: 0 0 var(--md-sys-spacing-sm) 0; color: var(--md-sys-color-on-surface);">Privacy First</h3>
+        <p class="body-medium" style="margin: 0; color: var(--md-sys-color-on-surface-variant);">
+          Your data stays yours. We process locally when possible.
+        </p>
+      </div>
+
+      <div class="glass-card" style="text-align: center; padding: var(--md-sys-spacing-xl);">
+        <div style="width: 64px; height: 64px; margin: 0 auto var(--md-sys-spacing-lg); background: rgba(255,255,255,0.6); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.5); border-radius: var(--md-sys-shape-corner-full); display: flex; align-items: center; justify-content: center;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--md-sys-color-primary)" stroke-width="2">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <h3 class="title-medium" style="margin: 0 0 var(--md-sys-spacing-sm) 0; color: var(--md-sys-color-on-surface);">Fast & Simple</h3>
+        <p class="body-medium" style="margin: 0; color: var(--md-sys-color-on-surface-variant);">
+          No bloat. Just tools that work, designed for real workflows.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- End page-content -->
+
+<!-- Image Picker Panel -->
+<div class="picker-panel">
+  <span class="picker-label">Background</span>
+
+  <div class="picker-options">
+    <div class="picker-option active" data-bg="original" onclick="selectBg('original')">
+      <img src="assets/images/bg-paint-strokes.jpg" alt="Original">
+      <span class="picker-option-label">Original</span>
+    </div>
+    <div class="picker-option" data-bg="desert" onclick="selectBg('desert')">
+      <img src="assets/images/test/desert-sunset.jpg" alt="Desert">
+      <span class="picker-option-label">Desert</span>
+    </div>
+    <div class="picker-option" data-bg="mountain" onclick="selectBg('mountain')">
+      <img src="assets/images/test/mountain-milkyway.jpg" alt="Mountain">
+      <span class="picker-option-label">Mountain</span>
+    </div>
+    <div class="picker-option" data-bg="workspace" onclick="selectBg('workspace')">
+      <img src="assets/images/test/workspace.jpg" alt="Workspace">
+      <span class="picker-option-label">Workspace</span>
+    </div>
+  </div>
+
+  <div class="overlay-controls">
+    <button class="overlay-btn" data-overlay="light" onclick="setOverlay('light')">Light</button>
+    <button class="overlay-btn active" data-overlay="standard" onclick="setOverlay('standard')">Standard</button>
+    <button class="overlay-btn" data-overlay="heavy" onclick="setOverlay('heavy')">Heavy</button>
+  </div>
+</div>
+
+<script>
+  const pageBg = document.getElementById('page-bg');
+  const currentNameEl = document.getElementById('current-name');
+  const bgNames = {
+    'original': 'Original (Paint Strokes)',
+    'desert': 'Desert Sunset',
+    'mountain': 'Mountain Milky Way',
+    'workspace': 'Workspace'
+  };
+
+  let currentBg = 'original';
+  let currentOverlay = 'standard';
+
+  function selectBg(bg) {
+    // Update active state on options
+    document.querySelectorAll('.picker-option').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.bg === bg);
+    });
+
+    // Remove all bg classes, add the new one
+    pageBg.classList.remove('bg-original', 'bg-desert', 'bg-mountain', 'bg-workspace');
+    pageBg.classList.add('bg-' + bg);
+
+    currentBg = bg;
+    currentNameEl.textContent = bgNames[bg];
+  }
+
+  function setOverlay(overlay) {
+    // Update active state on buttons
+    document.querySelectorAll('.overlay-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.overlay === overlay);
+    });
+
+    // Remove all overlay classes, add the new one
+    pageBg.classList.remove('overlay-light', 'overlay-standard', 'overlay-heavy');
+    pageBg.classList.add('overlay-' + overlay);
+
+    currentOverlay = overlay;
+  }
+</script>
+
+</body>
+</html>
