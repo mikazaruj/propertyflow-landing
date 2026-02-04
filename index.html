@@ -52,7 +52,13 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(255, 255, 255, 0.3);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.55) 0%,
+        rgba(255, 255, 255, 0.4) 35%,
+        rgba(255, 255, 255, 0.25) 70%,
+        rgba(255, 255, 255, 0.15) 100%
+      );
       z-index: -1;
     }
 
@@ -180,11 +186,11 @@
     }
 
     .glass-nav {
-      background: rgba(255, 255, 255, 0.45);
-      backdrop-filter: blur(20px) saturate(150%);
-      -webkit-backdrop-filter: blur(20px) saturate(150%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px) saturate(120%);
+      -webkit-backdrop-filter: blur(12px) saturate(120%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: none;
     }
 
     .glass-chip {
@@ -366,7 +372,7 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding-top: 64px;
+      padding-top: 0;
     }
 
     /* Hero overlay - more white + slight blur for harmony */
