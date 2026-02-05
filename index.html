@@ -52,14 +52,8 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.55) 0%,
-        rgba(255, 255, 255, 0.4) 35%,
-        rgba(255, 255, 255, 0.25) 70%,
-        rgba(255, 255, 255, 0.15) 100%
-      );
       z-index: -1;
+      background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.2) 100%);
     }
 
     /* Main content wrapper */
@@ -186,10 +180,10 @@
     }
 
     .glass-nav {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(0, 0, 0, 0.2);
       backdrop-filter: blur(12px) saturate(120%);
       -webkit-backdrop-filter: blur(12px) saturate(120%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: none;
     }
 
@@ -380,7 +374,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(255, 255, 255, 0.45);
+      background: transparent;
       z-index: 0;
     }
 
@@ -427,17 +421,17 @@
 
 <!-- Glass Navigation -->
 <nav class="nav-glass glass-nav">
-  <div class="container" style="display: flex; align-items: center; justify-content: space-between; height: 64px;">
+  <div class="container" style="display: flex; align-items: center; justify-content: space-between; height: 52px;">
     <a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-      <div style="width: 40px; height: 40px; background: var(--md-sys-color-primary); border-radius: var(--md-sys-shape-corner-medium); display: flex; align-items: center; justify-content: center;">
-        <span style="color: var(--md-sys-color-on-primary); font-weight: 500;">SK</span>
+      <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); border-radius: var(--md-sys-shape-corner-medium); display: flex; align-items: center; justify-content: center;">
+        <span style="color: #fff; font-weight: 500;">SK</span>
       </div>
-      <span class="title-medium" style="color: var(--md-sys-color-on-surface);">Still Kettle</span>
+      <span class="title-medium" style="color: #fff;">Still Kettle</span>
     </a>
 
     <div style="display: flex; align-items: center; gap: var(--md-sys-spacing-sm);">
-      <a href="#products" style="padding: 8px 16px; border-radius: var(--md-sys-shape-corner-full); text-decoration: none; color: var(--md-sys-color-on-surface-variant);">Products</a>
-      <a href="#about" style="padding: 8px 16px; border-radius: var(--md-sys-shape-corner-full); text-decoration: none; color: var(--md-sys-color-on-surface-variant);">About</a>
+      <a href="#products" style="padding: 8px 16px; border-radius: var(--md-sys-shape-corner-full); text-decoration: none; color: rgba(255,255,255,0.8);">Products</a>
+      <a href="#about" style="padding: 8px 16px; border-radius: var(--md-sys-shape-corner-full); text-decoration: none; color: rgba(255,255,255,0.8);">About</a>
     </div>
   </div>
 </nav>
@@ -447,27 +441,27 @@
   <div class="container hero-content">
     <div style="max-width: 720px;">
       <!-- Glass Chip -->
-      <div class="md-chip glass-chip animate animate-delay-1" style="margin-bottom: var(--md-sys-spacing-xl); color: var(--md-sys-color-on-surface);">
+      <div class="md-chip animate animate-delay-1" style="margin-bottom: var(--md-sys-spacing-xl); color: #fff; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(12px);">
         <span style="width: 8px; height: 8px; background: #22c55e; border-radius: 50%;"></span>
         Stella is now live
       </div>
 
-      <h1 class="display-medium animate animate-delay-2" style="color: var(--md-sys-color-on-surface); margin: 0 0 var(--md-sys-spacing-xl) 0;">
-        Software that works <span style="color: var(--md-sys-color-primary);">smarter</span>
+      <h1 class="display-medium animate animate-delay-2" style="color: #fff; margin: 0 0 var(--md-sys-spacing-xl) 0;">
+        Software that works <span style="color: #a78bfa;">smarter</span>
       </h1>
 
-      <p class="body-large animate animate-delay-3" style="color: var(--md-sys-color-on-surface-variant); margin: 0 0 var(--md-sys-spacing-3xl) 0; max-width: 560px;">
+      <p class="body-large animate animate-delay-3" style="color: rgba(255,255,255,0.8); margin: 0 0 var(--md-sys-spacing-3xl) 0; max-width: 560px;">
         We build AI-powered tools that automate tedious tasks and surface what matters. Simple software, thoughtfully made.
       </p>
 
       <div class="animate animate-delay-4" style="display: flex; gap: var(--md-sys-spacing-lg); flex-wrap: wrap;">
-        <a href="https://stella.stillkettle.com" class="md-button md-button--filled">
+        <a href="https://stella.stillkettle.com" class="md-button md-button--filled" style="background: #fff; color: #1a1a1a;">
           Try Stella Free
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </a>
-        <a href="#products" class="md-button md-button--glass">View Products</a>
+        <a href="#products" class="md-button" style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(12px);">View Products</a>
       </div>
     </div>
   </div>
